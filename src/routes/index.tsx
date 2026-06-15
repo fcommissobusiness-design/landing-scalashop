@@ -8,7 +8,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Il sistema operativo per il food retail artigianale italiano. Vendite, clienti, margini e magazzino sotto controllo, anche dal telefono. Prova gratis 14 giorni.",
+          "Il sistema operativo per gastronomie, salumerie, caseifici e botteghe alimentari. Vendite, scontrini, clienti e margini sotto controllo — anche dal telefono. Prova gratis 14 giorni.",
       },
       { property: "og:title", content: "ScalaShop — Riprendi il controllo della tua attività" },
       {
@@ -39,9 +39,9 @@ function Ticker() {
   const items = [...tickerItems, ...tickerItems];
   return (
     <div className="sticky top-0 z-50 overflow-hidden bg-[var(--brand-navy)] text-white border-b border-white/10">
-      <div className="flex w-max animate-marquee whitespace-nowrap py-2 text-sm font-medium">
+      <div className="flex w-max animate-marquee whitespace-nowrap py-2 text-xs sm:text-sm font-medium">
         {items.map((t, i) => (
-          <span key={i} className="mx-8 inline-flex items-center gap-2">
+          <span key={i} className="mx-6 sm:mx-8 inline-flex items-center gap-2">
             <span className="text-[var(--brand-orange)]">✓</span>
             {t}
           </span>
@@ -55,19 +55,25 @@ function PrimaryCTA({
   children,
   className = "",
   size = "md",
+  variant = "orange",
 }: {
   children: React.ReactNode;
   className?: string;
   size?: "md" | "lg";
+  variant?: "orange" | "ghost";
 }) {
   const sizing =
-    size === "lg" ? "px-8 py-4 text-lg" : "px-6 py-3.5 text-base";
+    size === "lg" ? "px-7 sm:px-9 py-4 text-base sm:text-lg" : "px-6 py-3.5 text-base";
+  const style =
+    variant === "orange"
+      ? "bg-[var(--brand-orange)] text-[var(--brand-navy)] shadow-[0_12px_30px_-10px_rgba(245,166,35,0.7)] hover:brightness-95"
+      : "border border-white/25 text-white hover:bg-white/10";
   return (
     <a
       href={TRIAL_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center justify-center rounded-md bg-[var(--brand-orange)] font-semibold text-[var(--brand-navy)] shadow-[0_8px_24px_-8px_rgba(245,166,35,0.6)] transition hover:brightness-95 hover:-translate-y-0.5 ${sizing} ${className}`}
+      className={`inline-flex items-center justify-center rounded-md font-semibold transition hover:-translate-y-0.5 ${style} ${sizing} ${className}`}
     >
       {children}
     </a>
@@ -77,87 +83,133 @@ function PrimaryCTA({
 function Header() {
   return (
     <header className="border-b border-border bg-white">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-        <img src={logoAsset.url} alt="ScalaShop" className="h-16 md:h-20 w-auto" />
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 sm:px-6 py-4 sm:py-5">
+        <img src={logoAsset.url} alt="ScalaShop" className="h-14 sm:h-16 md:h-20 w-auto" />
         <a
           href={TRIAL_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="hidden sm:inline-flex items-center justify-center rounded-md bg-[var(--brand-orange)] px-5 py-2.5 text-sm font-semibold text-[var(--brand-navy)] hover:brightness-95"
         >
-          Provalo Gratis per 14 Giorni
+          Provalo Gratis 14 Giorni
         </a>
       </div>
     </header>
   );
 }
 
-/* --- Visual mockup PRIMA / DOPO per la Hero --- */
-function PrimaDopoVisual() {
+/* ---------- HERO ---------- */
+
+function ChaosScatter() {
+  // collage di elementi sparsi che evocano caos
+  const notes = [
+    { t: "Sig.ra Maria — vassoio misto x sabato", rot: -4, top: "4%", left: "2%", color: "bg-[#FFF1A8] text-[#3d3000]", kind: "postit" },
+    { t: "WhatsApp · 'mi tieni 3 etti parmigiano?'", rot: 2, top: "22%", left: "26%", color: "bg-[#DCF8C6] text-[#0b3d0b]", kind: "msg" },
+    { t: "Excel — margini_2.xlsx", rot: -2, top: "44%", left: "5%", color: "bg-white text-[#1a2e4a] border border-[#e5e7eb]", kind: "doc" },
+    { t: "Scontrino #0184  €  6,40", rot: 5, top: "58%", left: "30%", color: "bg-[#fafafa] text-[#444] border border-[#e5e7eb]", kind: "receipt" },
+    { t: "Chiamare fornitore latticini", rot: -6, top: "70%", left: "8%", color: "bg-[#FFB6B6] text-[#5a0000]", kind: "postit" },
+    { t: "WhatsApp · 'tenete ancora le lasagne?'", rot: 3, top: "82%", left: "32%", color: "bg-[#DCF8C6] text-[#0b3d0b]", kind: "msg" },
+    { t: "Quaderno cassa · pag. 12", rot: -3, top: "10%", left: "44%", color: "bg-[#fff7e0] text-[#3a2a00] border border-[#e8d99a]", kind: "doc" },
+  ];
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-      {/* PRIMA — caos */}
-      <div className="relative rounded-2xl border border-white/10 bg-white/[0.04] p-5 overflow-hidden">
-        <div className="flex items-center justify-between">
-          <span className="text-[10px] uppercase tracking-widest text-white/50">Prima</span>
-          <span className="text-[10px] font-semibold text-red-300 bg-red-500/15 px-2 py-0.5 rounded-full">
-            Caos
-          </span>
-        </div>
-        <div className="mt-4 space-y-2.5">
-          {[
-            { c: "bg-green-400/80", t: "WhatsApp · ordine signora Maria 🍞🍷" },
-            { c: "bg-yellow-300/80", t: "Post-it: chiamare fornitore latticini" },
-            { c: "bg-blue-300/80", t: "Excel — margini.xlsx (non aggiornato)" },
-            { c: "bg-pink-300/80", t: "Quaderno cassa · pag. 12" },
-            { c: "bg-green-400/80", t: "WhatsApp · prenotazione vassoio" },
-          ].map((r, i) => (
-            <div
-              key={i}
-              className="flex items-center gap-3 rounded-lg bg-white/[0.06] px-3 py-2 text-sm text-white/85"
-              style={{ transform: `rotate(${(i % 2 ? -0.6 : 0.6)}deg)` }}
-            >
-              <span className={`h-2 w-2 rounded-full ${r.c}`} />
-              <span className="truncate">{r.t}</span>
-            </div>
-          ))}
-        </div>
-        <div className="pointer-events-none absolute -bottom-6 -right-6 h-24 w-24 rounded-full bg-red-500/10 blur-2xl" />
+    <div className="relative h-[420px] sm:h-[480px] md:h-[520px] w-full select-none">
+      {/* leggero "rumore" di sfondo, no grid */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-10 -left-10 h-60 w-60 rounded-full bg-red-500/10 blur-3xl" />
+        <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-yellow-300/10 blur-3xl" />
       </div>
+      {notes.map((n, i) => (
+        <div
+          key={i}
+          className={`absolute max-w-[58%] sm:max-w-[52%] rounded-sm px-3 py-2 text-[12px] sm:text-[13px] font-medium leading-snug shadow-[0_14px_30px_-12px_rgba(0,0,0,0.55)] ${n.color}`}
+          style={{
+            top: n.top,
+            left: n.left,
+            transform: `rotate(${n.rot}deg)`,
+          }}
+        >
+          {n.kind === "msg" && (
+            <span className="block text-[10px] opacity-70 mb-0.5">WhatsApp · 09:{20 + i}</span>
+          )}
+          {n.kind === "receipt" && (
+            <span className="block text-[10px] opacity-60 mb-0.5">— ricevuta —</span>
+          )}
+          {n.t}
+        </div>
+      ))}
+      <div className="absolute bottom-3 left-3 text-[11px] uppercase tracking-[0.2em] text-white/50">
+        Prima · tutto sparso
+      </div>
+    </div>
+  );
+}
 
-      {/* DOPO — controllo */}
-      <div className="relative rounded-2xl border border-[var(--brand-orange)]/40 bg-white text-[var(--brand-navy)] p-5 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.5)]">
-        <div className="flex items-center justify-between">
-          <span className="text-[10px] uppercase tracking-widest text-[var(--brand-navy)]/60">
-            Oggi · Riepilogo
-          </span>
-          <span className="text-[10px] font-semibold text-[var(--brand-navy)] bg-[var(--brand-orange)]/20 px-2 py-0.5 rounded-full">
-            In controllo
-          </span>
+function PhoneMockup({ compact = false }: { compact?: boolean }) {
+  return (
+    <div
+      className={`relative mx-auto ${compact ? "w-[230px]" : "w-[260px] sm:w-[290px]"} rounded-[2.2rem] border-[10px] border-[#0b1422] bg-[#0b1422] shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)]`}
+    >
+      <div className="absolute left-1/2 top-1.5 z-10 h-4 w-20 -translate-x-1/2 rounded-full bg-[#0b1422]" />
+      <div className="overflow-hidden rounded-[1.6rem] bg-white">
+        {/* status bar */}
+        <div className="flex items-center justify-between bg-[var(--brand-navy)] px-4 py-3 text-white">
+          <span className="text-[11px] font-semibold tracking-wide">ScalaShop</span>
+          <span className="text-[10px] opacity-70">Oggi · 18:42</span>
         </div>
 
-        <div className="mt-4 grid grid-cols-2 gap-3">
-          <div className="rounded-lg bg-secondary p-3">
-            <p className="text-[11px] uppercase tracking-wider text-muted-foreground">Incasso</p>
-            <p className="mt-1 text-xl font-bold">€ 1.284</p>
-            <p className="text-[11px] text-green-600 font-medium">+12% vs ieri</p>
+        {/* card incasso */}
+        <div className="px-4 pt-4">
+          <p className="text-[10px] uppercase tracking-widest text-muted-foreground">
+            Incasso di oggi
+          </p>
+          <div className="mt-1 flex items-end justify-between">
+            <p className="text-2xl font-bold text-[var(--brand-navy)]">€ 386,40</p>
+            <span className="rounded-full bg-green-100 px-2 py-0.5 text-[10px] font-semibold text-green-700">
+              +8,2%
+            </span>
           </div>
-          <div className="rounded-lg bg-secondary p-3">
-            <p className="text-[11px] uppercase tracking-wider text-muted-foreground">Scontrini</p>
-            <p className="mt-1 text-xl font-bold">87</p>
-            <p className="text-[11px] text-muted-foreground">Scontrino medio € 14,8</p>
+          <p className="text-[10px] text-muted-foreground">vs media settimana scorsa</p>
+
+          {/* mini sparkline */}
+          <svg viewBox="0 0 200 50" className="mt-2 h-10 w-full">
+            <polyline
+              fill="none"
+              stroke="var(--brand-orange)"
+              strokeWidth="2"
+              points="0,40 25,32 50,36 75,22 100,28 125,18 150,24 175,12 200,16"
+            />
+            <polyline
+              fill="rgba(245,166,35,0.15)"
+              stroke="none"
+              points="0,40 25,32 50,36 75,22 100,28 125,18 150,24 175,12 200,16 200,50 0,50"
+            />
+          </svg>
+        </div>
+
+        {/* mini stats */}
+        <div className="mt-1 grid grid-cols-2 gap-2 px-4">
+          <div className="rounded-md bg-secondary px-3 py-2">
+            <p className="text-[9px] uppercase tracking-wider text-muted-foreground">Scontrini</p>
+            <p className="text-sm font-bold text-[var(--brand-navy)]">31</p>
+          </div>
+          <div className="rounded-md bg-secondary px-3 py-2">
+            <p className="text-[9px] uppercase tracking-wider text-muted-foreground">
+              Scontrino medio
+            </p>
+            <p className="text-sm font-bold text-[var(--brand-navy)]">€ 12,46</p>
           </div>
         </div>
 
-        <div className="mt-3 rounded-lg border border-border p-3">
-          <p className="text-[11px] uppercase tracking-wider text-muted-foreground">
+        {/* top prodotti */}
+        <div className="px-4 pt-3 pb-4">
+          <p className="text-[10px] uppercase tracking-widest text-muted-foreground">
             Più venduti oggi
           </p>
-          <ul className="mt-2 space-y-1.5 text-sm">
+          <ul className="mt-2 space-y-1.5 text-[12px] text-[var(--brand-navy)]">
             {[
-              ["Parmigiano 24 mesi", "€ 312"],
-              ["Lasagne porzione", "€ 248"],
-              ["Vassoio misto", "€ 196"],
+              ["Parmigiano 24 mesi", "€ 64,20"],
+              ["Lasagne porzione", "€ 48,00"],
+              ["Mortadella artigianale", "€ 31,50"],
             ].map(([n, v]) => (
               <li key={n} className="flex items-center justify-between">
                 <span className="flex items-center gap-2">
@@ -168,14 +220,12 @@ function PrimaDopoVisual() {
               </li>
             ))}
           </ul>
-        </div>
 
-        <div className="mt-3 flex items-center justify-between rounded-lg bg-[var(--brand-navy)] px-3 py-2 text-white">
-          <span className="text-xs">Clienti da richiamare</span>
-          <span className="text-sm font-bold text-[var(--brand-orange)]">3</span>
+          <div className="mt-3 flex items-center justify-between rounded-md bg-[var(--brand-navy)] px-3 py-2 text-white">
+            <span className="text-[11px]">Clienti da richiamare</span>
+            <span className="text-sm font-bold text-[var(--brand-orange)]">2</span>
+          </div>
         </div>
-
-        <div className="pointer-events-none absolute -top-8 -right-8 h-28 w-28 rounded-full bg-[var(--brand-orange)]/20 blur-2xl" />
       </div>
     </div>
   );
@@ -184,271 +234,404 @@ function PrimaDopoVisual() {
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-[var(--brand-navy)] text-white">
-      {/* glow background */}
+      {/* glow background pulito, niente grid */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 -left-24 h-96 w-96 rounded-full bg-[var(--brand-orange)]/15 blur-3xl" />
-        <div className="absolute top-1/3 -right-24 h-[28rem] w-[28rem] rounded-full bg-white/[0.04] blur-3xl" />
-        <div
-          className="absolute inset-0 opacity-[0.05]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.6) 1px, transparent 1px)",
-            backgroundSize: "44px 44px",
-          }}
-        />
+        <div className="absolute -top-40 -left-20 h-[28rem] w-[28rem] rounded-full bg-[var(--brand-orange)]/15 blur-[120px]" />
+        <div className="absolute bottom-[-10rem] right-[-6rem] h-[26rem] w-[26rem] rounded-full bg-white/[0.04] blur-[120px]" />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-6 pt-16 pb-20 md:pt-24 md:pb-28">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-3 py-1 text-xs font-medium text-white/80">
-              <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-orange)]" />
-              Per il food retail artigianale italiano
+      <div className="relative mx-auto max-w-6xl px-5 sm:px-6 pt-14 sm:pt-20 pb-16 md:pb-24">
+        <div className="max-w-3xl">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-3 py-1 text-[11px] sm:text-xs font-medium uppercase tracking-widest text-white/80">
+            <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-orange)]" />
+            Per gastronomie, salumerie, caseifici e botteghe
+          </span>
+          <h1 className="mt-5 text-[2.1rem] leading-[1.05] sm:text-5xl md:text-6xl font-bold tracking-tight">
+            Riprendi il controllo
+            <br />
+            della tua{" "}
+            <span className="text-[var(--brand-orange)]">attività.</span>
+          </h1>
+          <p className="mt-5 text-base sm:text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl">
+            Vendite, scontrini, clienti e margini sotto controllo in un unico sistema.
+            Anche dal telefono, mentre sei al banco.
+          </p>
+        </div>
+
+        {/* composizione visiva: caos a sinistra, mockup a destra */}
+        <div className="relative mt-10 sm:mt-14 grid items-center gap-8 lg:gap-4 lg:grid-cols-[1.05fr_1fr]">
+          <div className="relative">
+            <ChaosScatter />
+          </div>
+
+          {/* divider visivo "→ ScalaShop" su desktop */}
+          <div className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 items-center gap-3">
+            <div className="h-px w-10 bg-white/20" />
+            <span className="rounded-full bg-[var(--brand-orange)] px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-[var(--brand-navy)]">
+              ScalaShop
             </span>
-            <h1 className="mt-5 text-4xl md:text-6xl font-bold tracking-tight leading-[1.05]">
-              Riprendi il controllo
-              <br />
-              della tua{" "}
-              <span className="text-[var(--brand-orange)]">attività.</span>
-            </h1>
-            <p className="mt-6 text-lg md:text-xl text-white/80 leading-relaxed">
-              Vendite, clienti, margini e magazzino sotto controllo in un unico sistema.
-              <br className="hidden md:block" />
-              Anche dal telefono, mentre sei al banco.
-            </p>
-            <div className="mt-9">
-              <PrimaryCTA size="lg">Prova Gratuitamente per 14 Giorni</PrimaryCTA>
-            </div>
+            <div className="h-px w-10 bg-white/20" />
           </div>
 
           <div className="relative">
-            <PrimaDopoVisual />
+            <PhoneMockup />
+            <div className="mt-3 text-center text-[11px] uppercase tracking-[0.2em] text-white/50">
+              Dopo · tutto in un colpo d'occhio
+            </div>
           </div>
+        </div>
+
+        <div className="mt-10 sm:mt-12 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+          <PrimaryCTA size="lg">Provalo Gratuitamente per 14 Giorni</PrimaryCTA>
+          <span className="text-sm text-white/60">
+            Nessuna carta richiesta · attivazione in giornata
+          </span>
         </div>
       </div>
     </section>
   );
 }
 
+/* ---------- PAIN ---------- */
+
 function Pain() {
-  const left = [
-    "vendite registrate a memoria",
-    "scontrini di cui non resta traccia",
-    "clienti che non sai chi sono",
-    "ordini su WhatsApp",
-    "prodotti da controllare",
-    "prezzi e margini in testa",
-    "scadenze da ricordare",
-  ];
-  const right = [
-    "nella testa del titolare",
-    "nelle chat",
-    "nei fogli Excel",
-    "nei quaderni",
-    "nei messaggi vocali",
-  ];
+  return (
+    <section className="relative overflow-hidden bg-white">
+      <div className="mx-auto max-w-6xl px-5 sm:px-6 py-20 md:py-28">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16 items-start">
+          <div>
+            <span className="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-[var(--brand-orange)]">
+              Il vero problema
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.05] text-[var(--brand-navy)]">
+              Non lavori troppo.
+              <br />
+              <span className="relative inline-block">
+                <span className="relative z-10">Ricordi troppo.</span>
+                <span className="absolute left-0 bottom-1 h-3 w-full bg-[var(--brand-orange)]/30 -z-0" />
+              </span>
+            </h2>
+            <div className="mt-7 space-y-4 text-lg text-[var(--brand-navy)]/85 leading-relaxed">
+              <p>
+                Gli ordini su WhatsApp. I prezzi che hai aggiornato la settimana scorsa.
+                Il cliente che ha chiesto il vassoio per sabato. Il fornitore da richiamare.
+                Quanto hai venduto davvero ieri.
+              </p>
+              <p>
+                Tutto vive in un posto solo: <strong>la tua testa</strong>. E quando la testa è piena,
+                qualcosa si perde.
+              </p>
+            </div>
+          </div>
+
+          {/* composizione editoriale a destra */}
+          <div className="relative">
+            <div className="grid grid-cols-12 gap-3 text-[var(--brand-navy)]">
+              <div className="col-span-7 rounded-md bg-[#FFF1A8] p-4 shadow-[0_18px_40px_-20px_rgba(0,0,0,0.25)] -rotate-2">
+                <p className="text-[10px] uppercase tracking-widest opacity-60">Post-it cassa</p>
+                <p className="mt-1 text-sm font-semibold">
+                  Sig.ra Bianchi — 3 etti parmigiano, ritira sabato 09:30
+                </p>
+              </div>
+              <div className="col-span-5 rounded-md bg-[#DCF8C6] p-4 shadow-[0_18px_40px_-20px_rgba(0,0,0,0.25)] rotate-1">
+                <p className="text-[10px] uppercase tracking-widest opacity-60">WhatsApp</p>
+                <p className="mt-1 text-sm font-semibold">"Mi prepari il vassoio per stasera?"</p>
+              </div>
+              <div className="col-span-5 rounded-md bg-white border border-[#e5e7eb] p-4 shadow-[0_18px_40px_-20px_rgba(0,0,0,0.15)] rotate-1">
+                <p className="text-[10px] uppercase tracking-widest opacity-60">Excel</p>
+                <p className="mt-1 text-sm font-semibold">margini_v3_FINAL.xlsx</p>
+                <p className="text-[11px] opacity-60">Modificato 14 giorni fa</p>
+              </div>
+              <div className="col-span-7 rounded-md bg-[#fff7e0] border border-[#e8d99a] p-4 shadow-[0_18px_40px_-20px_rgba(0,0,0,0.2)] -rotate-1">
+                <p className="text-[10px] uppercase tracking-widest opacity-60">Quaderno cassa</p>
+                <p className="mt-1 text-sm font-semibold">
+                  Mar 11 — incasso ~ 340 (?) · da ricontrollare
+                </p>
+              </div>
+              <div className="col-span-12 rounded-md bg-[#fafafa] border border-dashed border-[#cbd5e1] p-4 -rotate-[0.5deg]">
+                <p className="text-[11px] opacity-60">
+                  Scontrini del giorno, alcuni nel cassetto, alcuni archiviati, alcuni persi.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-14 border-t border-[var(--brand-navy)]/10 pt-10">
+          <p className="text-2xl md:text-3xl font-semibold text-[var(--brand-navy)] leading-snug max-w-3xl">
+            Finché il volume è basso sembra funzionare.{" "}
+            <span className="text-[var(--brand-orange)]">
+              Poi arrivano gli errori.
+            </span>
+          </p>
+          <p className="mt-3 text-lg text-[var(--brand-navy)]/70 max-w-3xl">
+            Le vendite che non quadrano. Gli ordini dimenticati. I clienti che non tornano e non
+            sai perché.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- HIDDEN COST — editorial ---------- */
+
+function HiddenCost() {
   return (
     <section className="relative overflow-hidden bg-[var(--brand-navy)] text-white">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-24 right-1/4 h-80 w-80 rounded-full bg-[var(--brand-orange)]/10 blur-3xl" />
+        <div className="absolute -top-32 right-1/3 h-96 w-96 rounded-full bg-[var(--brand-orange)]/15 blur-[120px]" />
       </div>
-      <div className="relative mx-auto max-w-5xl px-6 py-20 md:py-28">
-        <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-3 py-1 text-xs font-medium text-white/80">
-          Il vero problema
-        </span>
-        <h2 className="mt-5 text-3xl md:text-5xl font-bold leading-[1.1]">
-          Il problema non è che lavori troppo.
-          <br />
-          <span className="text-[var(--brand-orange)]">
-            Il problema è che devi ricordare troppe cose.
-          </span>
-        </h2>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-7">
-            <p className="text-xs uppercase tracking-widest text-white/60">Ogni giorno</p>
-            <ul className="mt-4 space-y-2.5 text-lg">
-              {left.map((t) => (
-                <li key={t} className="flex gap-3">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--brand-orange)] shrink-0" />
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-7">
-            <p className="text-xs uppercase tracking-widest text-white/60">
-              E nella maggior parte delle attività tutto questo vive
-            </p>
-            <ul className="mt-4 space-y-2.5 text-lg">
-              {right.map((t) => (
-                <li key={t} className="flex gap-3">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--brand-orange)] shrink-0" />
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </div>
+      <div className="relative mx-auto max-w-6xl px-5 sm:px-6 py-20 md:py-28">
+        <div className="max-w-3xl">
+          <span className="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-[var(--brand-orange)]">
+            Il costo nascosto
+          </span>
+          <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.05]">
+            Non vedi i soldi che lasci sul tavolo.
+            <br />
+            <span className="text-white/60">Ma ci sono.</span>
+          </h2>
         </div>
 
-        <div className="mt-12 rounded-2xl border-l-4 border-[var(--brand-orange)] bg-white/[0.03] p-6 md:p-8 space-y-2 text-lg md:text-xl">
-          <p>Finché il volume è basso sembra funzionare.</p>
-          <p className="font-semibold text-[var(--brand-orange)]">Poi arrivano gli errori.</p>
-          <p className="text-white/85">Le vendite che non quadrano. Gli ordini dimenticati. I clienti persi.</p>
-          <p className="text-white/85">Le giornate passate a rincorrere informazioni.</p>
+        {/* composizione asimmetrica */}
+        <div className="mt-14 grid grid-cols-12 gap-5 md:gap-6">
+          <div className="col-span-12 md:col-span-7 border-l-2 border-[var(--brand-orange)] pl-5 md:pl-7">
+            <p className="text-5xl md:text-6xl font-bold text-[var(--brand-orange)] leading-none">
+              ~ 1 cliente al giorno
+            </p>
+            <p className="mt-3 text-lg text-white/80 max-w-md">
+              che non richiami, che dimentichi, che non sai più chi è.
+              In un anno fanno centinaia di scontrini in meno.
+            </p>
+          </div>
+
+          <div className="col-span-6 md:col-span-5 md:row-span-2 rounded-lg bg-white/[0.04] border border-white/10 p-6">
+            <p className="text-[11px] uppercase tracking-widest text-white/50">Costo invisibile</p>
+            <p className="mt-3 text-xl md:text-2xl font-semibold leading-snug">
+              Ore passate a cercare informazioni che dovrebbero essere a portata di mano.
+            </p>
+            <div className="mt-6 flex items-end gap-2">
+              <span className="text-5xl font-bold text-white">3–5h</span>
+              <span className="text-sm text-white/60 mb-1">a settimana</span>
+            </div>
+            <p className="mt-2 text-sm text-white/60">
+              Stime medie raccolte dai titolari che usano carta, Excel e WhatsApp.
+            </p>
+          </div>
+
+          <div className="col-span-6 md:col-span-7 md:col-start-1">
+            <div className="rounded-lg bg-white text-[var(--brand-navy)] p-6">
+              <p className="text-[11px] uppercase tracking-widest text-[var(--brand-navy)]/50">
+                Ogni settimana
+              </p>
+              <ul className="mt-3 space-y-2 text-base sm:text-lg font-medium">
+                <li className="flex items-start gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--brand-orange)]" />
+                  vendite che non sai davvero cosa hanno reso
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--brand-orange)]" />
+                  prodotti che lavori in perdita senza accorgertene
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--brand-orange)]" />
+                  ordini ricevuti, mai preparati
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="col-span-12 mt-2 md:mt-6">
+            <p className="text-2xl md:text-3xl font-semibold leading-snug max-w-3xl">
+              Il risultato è sempre lo stesso:{" "}
+              <span className="text-[var(--brand-orange)]">
+                lavori sempre di più, hai sempre meno controllo.
+              </span>
+            </p>
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-function HiddenCost() {
-  const items = [
-    "tempo perso a cercare informazioni",
-    "vendite che non sai cosa hanno reso davvero",
-    "clienti che non tornano",
-    "prodotti che rendono meno del previsto",
-    "opportunità mancate",
-    "attività che dipende completamente dalla tua presenza",
+/* ---------- POSITIONING — "Non è un altro gestionale" ---------- */
+
+function Positioning() {
+  const not = [
+    "un ERP da multinazionale",
+    "un software pieno di funzioni che non userai",
+    "un gestionale fiscale dove cercare cose",
+    "un sistema che richiede un consulente per ogni modifica",
   ];
   return (
     <section className="bg-white">
-      <div className="mx-auto max-w-4xl px-6 py-20 md:py-24 text-center">
-        <span className="inline-block rounded-full bg-[var(--brand-orange)]/15 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-[var(--brand-navy)]">
-          Il costo nascosto
-        </span>
-        <h2 className="mt-4 text-3xl md:text-4xl font-bold text-[var(--brand-navy)]">
-          Quanto ti costa non avere un sistema?
-        </h2>
-        <ul className="mt-10 mx-auto max-w-xl space-y-3 text-lg text-[var(--brand-navy)] text-left">
-          {items.map((t) => (
-            <li
-              key={t}
-              className="flex items-start gap-3 rounded-lg border border-border bg-secondary/50 px-4 py-3"
-            >
-              <span className="mt-1.5 h-2 w-2 rounded-full bg-[var(--brand-orange)] shrink-0" />
-              {t}
-            </li>
-          ))}
-        </ul>
-        <div className="mt-10 text-xl md:text-2xl text-[var(--brand-navy)] font-medium">
-          <p>Il risultato?</p>
-          <p className="mt-2 font-bold">Lavori sempre di più. Ma hai sempre meno controllo.</p>
+      <div className="mx-auto max-w-5xl px-5 sm:px-6 py-20 md:py-28">
+        <div className="max-w-3xl">
+          <span className="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-[var(--brand-orange)]">
+            Chiarisco subito
+          </span>
+          <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--brand-navy)] leading-[1.05]">
+            ScalaShop non è un altro gestionale.
+          </h2>
+          <p className="mt-5 text-lg text-[var(--brand-navy)]/70 leading-relaxed">
+            La maggior parte dei software per la ristorazione e il retail sono pensati per
+            chi sta in ufficio, non per chi sta al banco. Sono potenti, sì, ma chiedono tempo,
+            formazione e qualcuno che li tenga in piedi.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-2 items-stretch">
+          <div className="rounded-lg border border-[var(--brand-navy)]/10 p-7 bg-secondary/40">
+            <p className="text-[11px] font-bold uppercase tracking-widest text-[var(--brand-navy)]/60">
+              ScalaShop NON è
+            </p>
+            <ul className="mt-4 space-y-3 text-lg text-[var(--brand-navy)]/80">
+              {not.map((t) => (
+                <li key={t} className="flex gap-3">
+                  <span className="text-[var(--brand-navy)]/40 mt-1">✕</span>
+                  <span>{t}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-lg bg-[var(--brand-navy)] p-7 text-white">
+            <p className="text-[11px] font-bold uppercase tracking-widest text-[var(--brand-orange)]">
+              ScalaShop è
+            </p>
+            <p className="mt-4 text-xl font-semibold leading-snug">
+              Il sistema operativo della tua attività.
+            </p>
+            <p className="mt-3 text-white/80 leading-relaxed">
+              Uno strumento unico, pensato per chi vende ogni giorno al banco. Veloce da usare,
+              utile dal primo giorno e progettato per girare sul telefono che hai già in tasca.
+            </p>
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-function Positioning() {
-  const targets = [
-    "gastronomie",
-    "salumerie",
-    "caseifici con punto vendita",
-    "alimentari premium",
-    "botteghe specializzate",
-  ];
+/* ---------- DIFFERENTIATION (lunga, autorevole) ---------- */
+
+function Differentiation() {
   return (
-    <section className="bg-secondary">
-      <div className="mx-auto max-w-4xl px-6 py-20 md:py-24 text-center">
-        <h2 className="text-3xl md:text-5xl font-bold text-[var(--brand-navy)]">
-          Non è un altro gestionale.
-        </h2>
-        <p className="mt-6 text-lg text-muted-foreground">
-          La maggior parte dei software aiuta a registrare dati.
-        </p>
-        <p className="mt-2 text-xl md:text-2xl text-[var(--brand-navy)] font-semibold">
-          ScalaShop è stato progettato per aiutarti a gestire l'attività.
-        </p>
-        <p className="mt-8 text-base text-muted-foreground">
-          Per questo è costruito attorno alle esigenze reali di:
-        </p>
-        <div className="mt-5 flex flex-wrap justify-center gap-2.5">
-          {targets.map((t) => (
-            <span
-              key={t}
-              className="rounded-full bg-white border border-[var(--brand-navy)]/15 px-4 py-2 text-sm font-medium text-[var(--brand-navy)]"
-            >
-              {t}
+    <section className="bg-[var(--brand-navy)] text-white">
+      <div className="mx-auto max-w-6xl px-5 sm:px-6 py-20 md:py-28">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
+          <div>
+            <span className="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-[var(--brand-orange)]">
+              Perché ScalaShop è diverso
             </span>
-          ))}
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.05]">
+              Costruito al banco.
+              <br />
+              <span className="text-[var(--brand-orange)]">Non in una sala riunioni.</span>
+            </h2>
+            <p className="mt-6 text-lg text-white/80 leading-relaxed">
+              ScalaShop nasce dentro una gastronomia italiana vera. Ogni funzione esiste
+              perché un titolare l'ha chiesta, l'ha provata e l'ha vista funzionare nel suo negozio.
+            </p>
+            <p className="mt-4 text-lg text-white/80 leading-relaxed">
+              Niente menù infiniti. Niente schermate da imparare a memoria. Solo le informazioni
+              che ti servono per decidere oggi, in giornata.
+            </p>
+          </div>
+
+          <div className="space-y-5">
+            {[
+              {
+                k: "01",
+                t: "Pensato per chi sta dietro al banco",
+                d: "Non per il commercialista, non per la sede. Per il titolare operativo che apre la mattina, taglia, serve e chiude la cassa la sera.",
+              },
+              {
+                k: "02",
+                t: "Mobile prima di tutto",
+                d: "Lo usi dal telefono in 3 tap. Mentre sei in cassa, in laboratorio, dal fornitore. Non serve sederti al computer.",
+              },
+              {
+                k: "03",
+                t: "Una cosa fatta bene, non venti fatte a metà",
+                d: "Vendite, scontrini, clienti, margini, magazzino. Solo quello che ti serve davvero per gestire l'attività. Niente moduli inutili.",
+              },
+              {
+                k: "04",
+                t: "Parla la tua lingua",
+                d: "Scontrino medio, marginalità, prodotti che rendono. Concetti che usi già, non sigle e tecnicismi che ti rallentano.",
+              },
+              {
+                k: "05",
+                t: "Pronto in giornata",
+                d: "Configurazione assistita, niente corsi da seguire. Lo accendi e in poche ore stai già lavorando in modo diverso.",
+              },
+            ].map((b) => (
+              <div
+                key={b.k}
+                className="grid grid-cols-[auto_1fr] gap-5 items-start border-b border-white/10 pb-5 last:border-0"
+              >
+                <span className="text-2xl font-bold text-[var(--brand-orange)] tabular-nums leading-none pt-1">
+                  {b.k}
+                </span>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold">{b.t}</h3>
+                  <p className="mt-2 text-white/75 leading-relaxed">{b.d}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-        <p className="mt-8 text-base text-muted-foreground">
-          Attività dove il rapporto con il cliente conta ancora davvero.
-        </p>
       </div>
     </section>
   );
 }
+
+/* ---------- BENEFITS ---------- */
 
 function Benefits() {
   const items = [
-    {
-      t: "Vendite",
-      d: "Sai in tempo reale quanto hai venduto, come sta andando la giornata e cosa sta rendendo di più.",
-    },
-    {
-      t: "Scontrini",
-      d: "Ogni scontrino tracciato. Scontrino medio, picchi di vendita e andamento orario sotto controllo.",
-    },
-    {
-      t: "Prodotti",
-      d: "Scopri i prodotti più venduti, quelli che rendono davvero e quelli che ti stanno facendo perdere margine.",
-    },
-    {
-      t: "Clienti",
-      d: "Capisci chi sono i clienti migliori, chi acquista più spesso e chi non torna da tempo.",
-    },
-    {
-      t: "Margini",
-      d: "Marginalità chiara su ogni prodotto e su ogni giornata. Niente più calcoli a memoria.",
-    },
-    {
-      t: "Magazzino",
-      d: "Disponibilità, prodotti e scadenze sempre aggiornati, senza affidarti alla memoria.",
-    },
-    {
-      t: "Ordini & Prenotazioni",
-      d: "Ordini WhatsApp, prenotazioni e ritiri organizzati in un unico posto. Niente più ordini dimenticati.",
-    },
-    {
-      t: "Consegne",
-      d: "Pianifica e tieni traccia delle consegne senza fogli sparsi né chiamate continue.",
-    },
-    {
-      t: "Controllo totale",
-      d: "Sai sempre cosa sta succedendo nella tua attività, anche quando non sei dietro al banco.",
-    },
+    { t: "Vendite del giorno", d: "Sai in tempo reale quanto hai incassato, com'è andata la mattina e cosa puoi recuperare nel pomeriggio." },
+    { t: "Scontrino medio", d: "Conosci il valore reale di ogni cliente che entra. Niente più stime fatte a fine mese." },
+    { t: "Prodotti che rendono", d: "Vedi cosa vendi di più, cosa marginalizza davvero e cosa stai lavorando in perdita." },
+    { t: "Clienti", d: "Sai chi compra spesso, chi non torna da settimane e chi vale la pena richiamare." },
+    { t: "Margini chiari", d: "Marginalità su ogni prodotto e su ogni giornata. Senza calcoli a fine mese sul retro di uno scontrino." },
+    { t: "Magazzino sotto controllo", d: "Disponibilità, prodotti e scadenze sempre aggiornati. Niente più ordini sbagliati al fornitore." },
+    { t: "Ordini & prenotazioni", d: "Vassoi, ritiri e ordini WhatsApp in un'unica lista. Nessun ordine si perde più tra le chat." },
+    { t: "Consegne organizzate", d: "Pianifichi e tieni traccia delle consegne senza foglietti né telefonate a vuoto." },
+    { t: "Controllo totale", d: "Sai cosa sta succedendo in negozio anche quando non ci sei. Dal telefono, in qualunque momento." },
   ];
   return (
     <section className="bg-white">
-      <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
-        <div className="text-center">
-          <span className="inline-block rounded-full bg-[var(--brand-orange)]/15 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-[var(--brand-navy)]">
+      <div className="mx-auto max-w-6xl px-5 sm:px-6 py-20 md:py-28">
+        <div className="max-w-3xl">
+          <span className="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-[var(--brand-orange)]">
             Cosa controlli con ScalaShop
           </span>
-          <h2 className="mt-4 text-3xl md:text-5xl font-bold text-[var(--brand-navy)]">
-            Tutto quello che ti serve.{" "}
-            <span className="text-[var(--brand-orange)]">In un solo posto.</span>
+          <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--brand-navy)] leading-[1.05]">
+            Tutto quello che ti serve. In un solo posto.
           </h2>
-          <p className="mt-4 text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Dalle vendite quotidiane al banco fino agli ordini e alle consegne. Senza saltare da un foglio all'altro.
+          <p className="mt-5 text-lg text-[var(--brand-navy)]/70 leading-relaxed">
+            Dalla vendita al banco fino agli ordini per il fine settimana. Senza saltare da
+            un foglio all'altro.
           </p>
         </div>
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((it, i) => (
             <div
               key={it.t}
-              className="group relative rounded-xl border border-border bg-white p-7 transition hover:border-[var(--brand-orange)]/60 hover:shadow-[0_12px_30px_-15px_rgba(26,46,74,0.25)]"
+              className="rounded-lg border border-[var(--brand-navy)]/10 bg-white p-6 transition hover:border-[var(--brand-navy)]/30 hover:shadow-[0_18px_40px_-20px_rgba(26,46,74,0.25)]"
             >
-              <span className="absolute -top-3 left-6 rounded-md bg-[var(--brand-navy)] px-2 py-0.5 text-[11px] font-bold tracking-wider text-white">
+              <span className="text-xs font-bold tabular-nums text-[var(--brand-navy)]/40">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <h3 className="text-xl font-bold uppercase tracking-wide text-[var(--brand-navy)]">
-                {it.t}
-              </h3>
-              <div className="mt-3 h-1 w-10 rounded-full bg-[var(--brand-orange)]" />
-              <p className="mt-4 text-base text-muted-foreground leading-relaxed">{it.d}</p>
+              <h3 className="mt-2 text-lg font-bold text-[var(--brand-navy)]">{it.t}</h3>
+              <p className="mt-2 text-[15px] text-[var(--brand-navy)]/70 leading-relaxed">
+                {it.d}
+              </p>
             </div>
           ))}
         </div>
@@ -457,181 +640,202 @@ function Benefits() {
   );
 }
 
-function Differentiation() {
-  const forWho = ["grandi aziende", "catene", "ristorazione", "amministrazione"];
-  const realUser = [
-    "apre il negozio la mattina",
-    "sta al banco con i clienti",
-    "registra le vendite della giornata",
-    "prepara ordini e prenotazioni",
-    "prende decisioni ogni giorno",
-  ];
+/* ---------- RECEIPTS PILLAR ---------- */
+
+function ReceiptsPillar() {
   return (
-    <section className="bg-secondary">
-      <div className="mx-auto max-w-5xl px-6 py-20 md:py-24">
-        <h2 className="text-3xl md:text-5xl font-bold text-[var(--brand-navy)] text-center">
-          Perché ScalaShop è diverso
-        </h2>
-        <div className="mt-12 grid gap-8 md:grid-cols-2">
-          <div className="rounded-xl bg-white p-7 border border-border">
-            <p className="text-sm uppercase tracking-widest text-muted-foreground">
-              Molte soluzioni sono pensate per
+    <section className="bg-[var(--brand-navy)] text-white">
+      <div className="mx-auto max-w-6xl px-5 sm:px-6 py-20 md:py-28">
+        <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] items-center">
+          <div>
+            <span className="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-[var(--brand-orange)]">
+              Il cuore di ScalaShop
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.05]">
+              Ogni scontrino che batti,
+              <br />
+              <span className="text-[var(--brand-orange)]">il tuo negozio lo registra.</span>
+            </h2>
+            <p className="mt-6 text-lg text-white/80 leading-relaxed">
+              Vendi al banco come hai sempre fatto. ScalaShop registra automaticamente
+              <strong> importo, orario e prodotti</strong> di ogni scontrino, e ti restituisce
+              in tempo reale com'è andata la giornata.
             </p>
-            <ul className="mt-4 space-y-2 text-lg text-[var(--brand-navy)]">
-              {forWho.map((t) => (
+            <ul className="mt-7 space-y-3 text-base sm:text-lg">
+              {[
+                "Incasso aggiornato a ogni scontrino, senza scriverlo da nessuna parte",
+                "Scontrino medio, picchi orari e andamento del giorno sempre visibili",
+                "Storico completo: confronto con ieri, settimana scorsa, stesso giorno dell'anno scorso",
+                "Da telefono, mentre il cliente è ancora di fronte a te",
+              ].map((t) => (
                 <li key={t} className="flex gap-3">
-                  <span className="text-muted-foreground">—</span>
-                  {t}
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--brand-orange)] shrink-0" />
+                  <span className="text-white/85">{t}</span>
                 </li>
               ))}
             </ul>
+            <p className="mt-7 text-white/60 italic">
+              Niente quaderno cassa. Niente "stasera tiriamo le somme". Le somme sono già lì.
+            </p>
           </div>
-          <div className="rounded-xl bg-[var(--brand-navy)] p-7 text-white">
-            <p className="text-sm uppercase tracking-widest text-[var(--brand-orange)]">
-              ScalaShop è progettato per il titolare operativo
-            </p>
-            <p className="mt-2 text-white/80">Quello che:</p>
-            <ul className="mt-3 space-y-2 text-lg">
-              {realUser.map((t) => (
-                <li key={t} className="flex gap-3">
-                  <span className="text-[var(--brand-orange)]">•</span>
-                  {t}
-                </li>
-              ))}
-            </ul>
+
+          {/* visual: feed scontrini live + totale */}
+          <div className="relative">
+            <div className="rounded-2xl bg-white text-[var(--brand-navy)] p-5 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.5)]">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-[10px] uppercase tracking-widest text-[var(--brand-navy)]/50">
+                    Live · Oggi
+                  </p>
+                  <p className="text-3xl font-bold">€ 342,80</p>
+                  <p className="text-xs text-[var(--brand-navy)]/60">28 scontrini · medio € 12,24</p>
+                </div>
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-100 text-green-700 text-xs font-bold">
+                  +6%
+                </div>
+              </div>
+              <div className="mt-5 space-y-2">
+                {[
+                  ["#0218", "13:42", "Parmigiano + pane", "€ 14,80"],
+                  ["#0217", "13:36", "Lasagne x2", "€ 18,00"],
+                  ["#0216", "13:29", "Vassoio salumi", "€ 24,50"],
+                  ["#0215", "13:21", "Mortadella", "€ 6,40"],
+                  ["#0214", "13:18", "Caciotta + olive", "€ 11,20"],
+                ].map(([n, h, p, v]) => (
+                  <div
+                    key={n}
+                    className="grid grid-cols-[auto_auto_1fr_auto] items-center gap-3 rounded-md border border-[var(--brand-navy)]/10 px-3 py-2 text-[13px]"
+                  >
+                    <span className="font-mono text-[11px] text-[var(--brand-navy)]/50">{n}</span>
+                    <span className="text-[11px] text-[var(--brand-navy)]/60">{h}</span>
+                    <span className="truncate">{p}</span>
+                    <span className="font-semibold">{v}</span>
+                  </div>
+                ))}
+                <div className="flex items-center justify-center gap-2 rounded-md bg-[var(--brand-orange)]/15 px-3 py-2 text-[12px] font-medium text-[var(--brand-navy)]">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-orange)] animate-pulse" />
+                  in aggiornamento dopo ogni scontrino
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <p className="mt-10 text-center text-lg md:text-xl text-[var(--brand-navy)] font-medium">
-          Per questo è semplice, diretto e utilizzabile anche da smartphone.
-        </p>
       </div>
     </section>
   );
 }
+
+/* ---------- OUTCOME ---------- */
 
 function Outcome() {
   const items = [
     "quanto hai venduto oggi",
     "qual è lo scontrino medio",
-    "cosa sta rendendo di più",
-    "quali clienti contattare",
-    "quali ordini preparare",
-    "cosa richiede attenzione",
+    "cosa sta rendendo davvero",
+    "quali clienti richiamare",
+    "quali ordini preparare per domani",
+    "cosa richiede attenzione adesso",
   ];
   return (
     <section className="bg-white">
-      <div className="mx-auto max-w-4xl px-6 py-20 md:py-24 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-[var(--brand-navy)] leading-tight">
-          Immagina di aprire il telefono e sapere subito:
-        </h2>
-        <ul className="mt-10 mx-auto max-w-md space-y-3 text-lg text-[var(--brand-navy)] text-left">
-          {items.map((t) => (
-            <li
-              key={t}
-              className="flex gap-3 rounded-lg border border-border bg-secondary/40 px-4 py-3"
-            >
-              <span className="text-[var(--brand-orange)] font-bold">✓</span>
-              {t}
-            </li>
-          ))}
-        </ul>
-        <div className="mt-10 space-y-1 text-lg md:text-xl text-muted-foreground">
-          <p>Senza cercare informazioni.</p>
-          <p>Senza fare calcoli.</p>
-          <p>Senza affidarti alla memoria.</p>
+      <div className="mx-auto max-w-5xl px-5 sm:px-6 py-20 md:py-28">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] items-center">
+          <div>
+            <span className="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-[var(--brand-orange)]">
+              Una nuova abitudine
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--brand-navy)] leading-[1.05]">
+              Apri il telefono. Sai tutto.
+            </h2>
+            <p className="mt-5 text-lg text-[var(--brand-navy)]/70 leading-relaxed">
+              Niente fogli da cercare, niente calcoli, niente "poi controllo a fine giornata".
+              Le risposte sono già lì, dove servono.
+            </p>
+            <ul className="mt-7 space-y-2.5">
+              {items.map((t) => (
+                <li
+                  key={t}
+                  className="flex items-center gap-3 border-b border-[var(--brand-navy)]/10 pb-2.5 text-[var(--brand-navy)]"
+                >
+                  <span className="text-[var(--brand-orange)] font-bold">✓</span>
+                  <span className="text-base sm:text-lg">{t}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="flex justify-center">
+            <PhoneMockup compact />
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-function HowItWorks() {
-  const steps = [
-    "Registrati gratuitamente.",
-    "Accedi alla demo.",
-    "Utilizza ScalaShop per 14 giorni.",
-    "Scopri se può aiutarti a lavorare con più controllo e meno stress.",
-  ];
-  return (
-    <section className="bg-secondary">
-      <div className="mx-auto max-w-5xl px-6 py-20 md:py-24">
-        <h2 className="text-3xl md:text-4xl font-bold text-[var(--brand-navy)] text-center">
-          Come funziona
-        </h2>
-        <div className="mt-12 grid gap-6 md:grid-cols-4">
-          {steps.map((s, i) => (
-            <div
-              key={i}
-              className="rounded-xl bg-white border border-border p-6 text-center"
-            >
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[var(--brand-orange)] text-xl font-bold text-[var(--brand-navy)]">
-                {i + 1}
-              </div>
-              <p className="mt-4 text-base text-[var(--brand-navy)]">{s}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+/* ---------- FINAL CTA ---------- */
 
 function FinalCTA() {
-  const tags = ["Vendite.", "Clienti.", "Margini.", "Magazzino.", "Ordini.", "Consegne."];
+  const tags = ["Vendite.", "Scontrini.", "Clienti.", "Margini.", "Magazzino.", "Ordini."];
   return (
     <section className="relative overflow-hidden bg-[var(--brand-navy)] text-white">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-24 left-1/3 h-80 w-80 rounded-full bg-[var(--brand-orange)]/15 blur-3xl" />
+        <div className="absolute -top-24 left-1/3 h-96 w-96 rounded-full bg-[var(--brand-orange)]/15 blur-[120px]" />
       </div>
-      <div className="relative mx-auto max-w-4xl px-6 py-20 md:py-28 text-center">
-        <h2 className="text-3xl md:text-5xl font-bold leading-tight">
+      <div className="relative mx-auto max-w-4xl px-5 sm:px-6 py-20 md:py-28 text-center">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.05]">
           Riprendi il controllo della tua attività.
         </h2>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
+        <div className="mt-8 flex flex-wrap justify-center gap-2.5">
           {tags.map((t) => (
             <span
               key={t}
-              className="rounded-full bg-white/10 border border-white/15 px-4 py-2 text-base font-medium"
+              className="rounded-full bg-white/10 border border-white/15 px-3.5 py-1.5 text-sm sm:text-base font-medium"
             >
               {t}
             </span>
           ))}
         </div>
         <p className="mt-6 text-lg text-white/80">Tutto in un unico sistema.</p>
-        <div className="mt-10 flex justify-center">
-          <PrimaryCTA size="lg">Prova Gratuitamente per 14 Giorni</PrimaryCTA>
+        <div className="mt-10 flex flex-col items-center gap-3">
+          <PrimaryCTA size="lg">Provalo Gratuitamente per 14 Giorni</PrimaryCTA>
+          <span className="text-sm text-white/60">
+            Demo disponibile fino al 31 luglio 2026
+          </span>
         </div>
       </div>
     </section>
   );
 }
 
+/* ---------- FAQ ---------- */
+
 function FAQ() {
   const items = [
     {
       q: "È adatto anche alle piccole attività?",
-      a: "Sì. ScalaShop nasce proprio dall'esperienza diretta di una piccola gastronomia di paese. È stato costruito partendo dai problemi reali di un'attività alimentare indipendente e oggi può essere replicato in gastronomie, salumerie, caseifici, botteghe alimentari e attività simili in tutta Italia.",
+      a: "Sì. ScalaShop nasce dentro una piccola gastronomia di paese. È stato costruito sui problemi reali di un'attività indipendente, e oggi può essere replicato in gastronomie, salumerie, caseifici, botteghe alimentari e attività simili in tutta Italia.",
     },
     {
       q: "Come si usa?",
-      a: "ScalaShop è stato progettato per essere semplice, immediato e intuitivo. È stato pensato per chi passa la giornata dietro al banco e non per chi lavora nel settore informatico. Uno strumento facile da utilizzare ogni giorno ma capace di fare una grande differenza nell'organizzazione dell'attività.",
+      a: "ScalaShop è stato progettato per essere semplice e immediato. È pensato per chi passa la giornata al banco, non per chi lavora nel settore informatico. Lo usi tutti i giorni senza dover imparare nulla di tecnico.",
     },
     {
       q: "Posso provarlo prima?",
-      a: "Sì. Fino al 31 Luglio 2026 è possibile richiedere una demo gratuita di 14 giorni. Potrai utilizzare il sistema, provarlo direttamente nella tua attività e capire concretamente quanto può aiutarti a recuperare controllo, ordine e visibilità.",
+      a: "Sì. Fino al 31 luglio 2026 puoi richiedere una demo gratuita di 14 giorni. La utilizzi direttamente nella tua attività e capisci concretamente quanto può aiutarti a recuperare controllo, ordine e visibilità.",
     },
     {
       q: "Funziona da telefono?",
-      a: "Sì. ScalaShop è stato pensato soprattutto per essere utilizzato durante la giornata lavorativa direttamente da smartphone. Quando sei al banco, in laboratorio o in negozio puoi accedere rapidamente alle informazioni che ti servono. È comunque ottimizzato anche per desktop.",
+      a: "Sì. ScalaShop è pensato soprattutto per essere usato durante la giornata dallo smartphone. Mentre sei al banco, in laboratorio o in negozio, hai sempre le informazioni che ti servono. È ottimizzato anche per desktop.",
     },
   ];
   return (
     <section className="bg-white">
-      <div className="mx-auto max-w-3xl px-6 py-20 md:py-24">
-        <h2 className="text-3xl md:text-4xl font-bold text-[var(--brand-navy)] text-center">
+      <div className="mx-auto max-w-3xl px-5 sm:px-6 py-20 md:py-28">
+        <h2 className="text-3xl sm:text-4xl font-bold text-[var(--brand-navy)] text-center">
           Domande frequenti
         </h2>
-        <div className="mt-10 divide-y divide-border border-y border-border">
+        <div className="mt-10 divide-y divide-[var(--brand-navy)]/10 border-y border-[var(--brand-navy)]/10">
           {items.map((it) => (
             <details key={it.q} className="group py-5">
               <summary className="flex cursor-pointer items-center justify-between text-lg font-semibold text-[var(--brand-navy)]">
@@ -640,7 +844,7 @@ function FAQ() {
                   +
                 </span>
               </summary>
-              <p className="mt-3 text-base text-muted-foreground leading-relaxed">{it.a}</p>
+              <p className="mt-3 text-base text-[var(--brand-navy)]/70 leading-relaxed">{it.a}</p>
             </details>
           ))}
         </div>
@@ -651,10 +855,10 @@ function FAQ() {
 
 function Footer() {
   return (
-    <footer className="bg-white border-t border-border">
-      <div className="mx-auto max-w-6xl px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-5">
-        <img src={logoAsset.url} alt="ScalaShop" className="h-16 md:h-20 w-auto" />
-        <p className="text-sm text-muted-foreground text-center md:text-right">
+    <footer className="bg-white border-t border-[var(--brand-navy)]/10">
+      <div className="mx-auto max-w-6xl px-5 sm:px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-5">
+        <img src={logoAsset.url} alt="ScalaShop" className="h-14 sm:h-16 md:h-20 w-auto" />
+        <p className="text-sm text-[var(--brand-navy)]/60 text-center sm:text-right">
           © {new Date().getFullYear()} ScalaShop · Food Business Growth · Made in Italy
         </p>
       </div>
@@ -669,10 +873,15 @@ function StickyWhatsApp() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Scrivici su WhatsApp"
-      className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_10px_30px_-5px_rgba(37,211,102,0.6)] transition hover:scale-105"
+      className="fixed bottom-5 right-5 z-50 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-[0_12px_30px_-5px_rgba(37,211,102,0.6)] transition hover:scale-105"
     >
-      <svg viewBox="0 0 32 32" className="h-7 w-7" fill="currentColor" aria-hidden="true">
-        <path d="M19.11 17.55c-.27-.14-1.62-.8-1.87-.89-.25-.09-.43-.14-.62.14-.18.27-.71.89-.87 1.07-.16.18-.32.2-.59.07-.27-.14-1.16-.43-2.21-1.37-.82-.73-1.37-1.63-1.53-1.9-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.62-1.5-.85-2.05-.22-.54-.45-.47-.62-.48-.16-.01-.34-.01-.52-.01s-.48.07-.73.34c-.25.27-.96.94-.96 2.29 0 1.35.98 2.66 1.12 2.84.14.18 1.94 2.96 4.7 4.15.66.28 1.17.45 1.57.58.66.21 1.26.18 1.74.11.53-.08 1.62-.66 1.85-1.3.23-.64.23-1.18.16-1.3-.07-.12-.25-.18-.52-.32zM16.03 5.33c-5.9 0-10.7 4.8-10.7 10.7 0 1.88.49 3.71 1.42 5.33L5 27l5.78-1.52a10.66 10.66 0 0 0 5.25 1.37h.01c5.9 0 10.7-4.8 10.7-10.7s-4.81-10.82-10.71-10.82zm0 19.6h-.01a8.86 8.86 0 0 1-4.51-1.24l-.32-.19-3.43.9.92-3.34-.21-.34a8.86 8.86 0 0 1-1.36-4.71c0-4.9 3.99-8.89 8.89-8.89 2.37 0 4.6.93 6.27 2.61a8.81 8.81 0 0 1 2.6 6.28c.01 4.9-3.97 8.92-8.84 8.92z" />
+      <svg
+        viewBox="0 0 32 32"
+        className="h-6 w-6"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path d="M16 3C8.82 3 3 8.82 3 16c0 2.3.6 4.55 1.75 6.52L3 29l6.66-1.74A12.94 12.94 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3zm0 23.6c-2.05 0-4.06-.55-5.82-1.6l-.42-.25-3.95 1.03 1.05-3.85-.27-.4A10.55 10.55 0 0 1 5.4 16C5.4 10.15 10.15 5.4 16 5.4S26.6 10.15 26.6 16 21.85 26.6 16 26.6zm6.1-7.93c-.33-.17-1.95-.96-2.25-1.07-.3-.11-.52-.17-.74.17-.22.33-.85 1.07-1.04 1.29-.19.22-.38.25-.71.08-.33-.17-1.4-.52-2.66-1.65-.98-.88-1.65-1.96-1.85-2.29-.19-.33-.02-.51.15-.68.15-.15.33-.38.5-.58.17-.19.22-.33.33-.55.11-.22.06-.41-.03-.58-.08-.17-.74-1.79-1.02-2.45-.27-.65-.55-.56-.74-.57-.19-.01-.41-.01-.63-.01s-.58.08-.88.41c-.3.33-1.15 1.13-1.15 2.75 0 1.62 1.18 3.19 1.35 3.41.17.22 2.32 3.55 5.62 4.98.79.34 1.4.54 1.88.69.79.25 1.5.21 2.07.13.63-.09 1.95-.79 2.22-1.56.27-.77.27-1.43.19-1.56-.08-.13-.3-.21-.63-.38z" />
       </svg>
     </a>
   );
@@ -688,10 +897,10 @@ function Index() {
         <Pain />
         <HiddenCost />
         <Positioning />
-        <Benefits />
         <Differentiation />
+        <Benefits />
+        <ReceiptsPillar />
         <Outcome />
-        <HowItWorks />
         <FinalCTA />
         <FAQ />
       </main>
