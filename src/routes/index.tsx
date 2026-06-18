@@ -1059,7 +1059,7 @@ function Footer() {
   return (
     <footer className="bg-white border-t border-[var(--brand-navy)]/10">
       <div className="mx-auto max-w-6xl px-5 sm:px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-5">
-        <img src={logoAsset.url} alt="ScalaShop" className="h-16 sm:h-20 md:h-24 w-auto" />
+        <img src={logoAsset.url} alt="ScalaShop" className="h-20 sm:h-24 md:h-32 w-auto" />
         <p className="text-sm text-[var(--brand-navy)]/60 text-center sm:text-right">
           © {new Date().getFullYear()} ScalaShop
         </p>
