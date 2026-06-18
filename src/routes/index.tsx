@@ -259,9 +259,10 @@ function Hero() {
         <div className="relative mt-12 sm:mt-16 grid items-start gap-12 lg:gap-12 lg:grid-cols-2">
           <div>
             <div className="flex justify-center lg:justify-start">
-              <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-[0.18em] text-white/90">
+              <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-[0.18em] text-white/90">
                 Prima
-              </h3>
+              </h2>
+
             </div>
             <p className="mt-4 text-center lg:text-left text-sm text-white/60 max-w-sm mx-auto lg:mx-0">
               Informazioni sparse tra carta, chat e memoria.
