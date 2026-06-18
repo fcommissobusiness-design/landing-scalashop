@@ -84,7 +84,7 @@ function Header() {
   return (
     <header className="border-b border-border bg-white">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 sm:px-6 py-5 sm:py-6">
-        <img src={logoAsset.url} alt="ScalaShop" className="h-20 sm:h-24 md:h-28 w-auto" />
+        <img src={logoAsset.url} alt="ScalaShop" className="h-28 sm:h-32 md:h-40 w-auto" />
         <a
           href={TRIAL_URL}
           target="_blank"
@@ -256,12 +256,12 @@ function Hero() {
           </div>
 
           <div>
-            <div className="flex justify-center lg:justify-start">
+            <div className="flex justify-center">
               <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-[0.18em] text-[var(--brand-orange)]">
                 Dopo
               </h3>
             </div>
-            <p className="mt-4 text-center lg:text-left text-sm text-white/60 max-w-sm mx-auto lg:mx-0">
+            <p className="mt-4 text-center text-sm text-white/60 max-w-sm mx-auto">
               Una sola schermata. Apri il telefono e vedi quanto hai venduto, cosa rende e cosa
               serve fare adesso.
             </p>
@@ -434,12 +434,12 @@ function Pain() {
           </div>
         </div>
 
-        <div className="mt-14 pt-10">
-          <p className="text-2xl md:text-3xl font-semibold text-[var(--brand-navy)] leading-snug max-w-3xl">
+        <div className="mt-14 pt-10 text-center">
+          <p className="mx-auto text-2xl md:text-3xl font-semibold text-[var(--brand-navy)] leading-snug max-w-3xl">
             Finché il volume è basso sembra funzionare.{" "}
             <span className="text-[var(--brand-orange)]">Poi arrivano gli errori.</span>
           </p>
-          <p className="mt-3 text-lg text-[var(--brand-navy)]/70 max-w-3xl">
+          <p className="mx-auto mt-3 text-lg text-[var(--brand-navy)]/70 max-w-3xl">
             Le vendite che non quadrano. Gli ordini dimenticati. I clienti che non tornano e non
             sai perché.
           </p>
@@ -457,7 +457,7 @@ function HiddenCost() {
   const losses = [
     {
       n: "01",
-      kpi: "Riordini fatti a sentimento",
+      kpi: "Ordini e scarichi fatti a sentimento",
       t: "",
       d: "Giorni in cui finisci il prodotto troppo presto. Giorni in cui ne rimane troppo e sei costretto a svenderlo o buttarlo.",
     },
@@ -829,7 +829,7 @@ function Benefits() {
 
 function ReceiptsPillar() {
   return (
-    <section className="bg-[var(--brand-navy)] text-white">
+    <section className="bg-[var(--brand-navy)] text-white border-t border-white/10">
       <div className="mx-auto max-w-6xl px-5 sm:px-6 py-20 md:py-28">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] items-center">
           <div>
@@ -905,7 +905,7 @@ function ReceiptsPillar() {
           </div>
         </div>
 
-        <SectionCTA tone="dark" bridge="Le somme sono già lì. Tu devi solo aprirle." />
+        <SectionCTA tone="dark" bridge="Apri il telefono. La tua giornata è già tutta lì." />
       </div>
     </section>
   );
@@ -923,7 +923,7 @@ function Outcome() {
     "cosa richiede attenzione adesso",
   ];
   return (
-    <section className="bg-white">
+    <section className="bg-[#fbf8f3] border-t border-[var(--brand-navy)]/10">
       <div className="mx-auto max-w-5xl px-5 sm:px-6 py-20 md:py-28">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] items-center">
           <div>
@@ -1059,7 +1059,7 @@ function Footer() {
   return (
     <footer className="bg-white border-t border-[var(--brand-navy)]/10">
       <div className="mx-auto max-w-6xl px-5 sm:px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-5">
-        <img src={logoAsset.url} alt="ScalaShop" className="h-16 sm:h-20 md:h-24 w-auto" />
+        <img src={logoAsset.url} alt="ScalaShop" className="h-20 sm:h-24 md:h-32 w-auto" />
         <p className="text-sm text-[var(--brand-navy)]/60 text-center sm:text-right">
           © {new Date().getFullYear()} ScalaShop
         </p>
