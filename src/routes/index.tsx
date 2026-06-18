@@ -1037,9 +1037,9 @@ function Index() {
         <HiddenCost />
         <Positioning />
         <Differentiation />
+        <ReceiptsPillar />
         <WasteReduction />
         <Benefits />
-        <ReceiptsPillar />
         <Outcome />
         <FinalCTA />
         <FAQ />
