@@ -457,7 +457,7 @@ function HiddenCost() {
   const losses = [
     {
       n: "01",
-      kpi: "Riordini fatti a sentimento",
+      kpi: "Ordini e scarichi fatti a sentimento",
       t: "",
       d: "Giorni in cui finisci il prodotto troppo presto. Giorni in cui ne rimane troppo e sei costretto a svenderlo o buttarlo.",
     },
