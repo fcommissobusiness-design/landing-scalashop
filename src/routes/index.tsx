@@ -829,7 +829,7 @@ function Benefits() {
 
 function ReceiptsPillar() {
   return (
-    <section className="bg-[var(--brand-navy)] text-white">
+    <section className="bg-[var(--brand-navy)] text-white border-t border-white/10">
       <div className="mx-auto max-w-6xl px-5 sm:px-6 py-20 md:py-28">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] items-center">
           <div>
