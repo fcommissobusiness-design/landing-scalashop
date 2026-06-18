@@ -83,7 +83,7 @@ function PrimaryCTA({
 function Header() {
   return (
     <header className="border-b border-border bg-white">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 sm:px-6 py-5 sm:py-6">
+      <div className="mx-auto flex max-w-6xl items-center justify-center sm:justify-between px-5 sm:px-6 py-5 sm:py-6">
         <img src={logoAsset.url} alt="ScalaShop" className="h-28 sm:h-32 md:h-40 w-auto" />
         <a
           href={TRIAL_URL}
