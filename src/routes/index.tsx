@@ -274,9 +274,10 @@ function Hero() {
 
           <div>
             <div className="flex justify-center">
-              <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-[0.18em] text-[var(--brand-orange)]">
+              <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-[0.18em] text-[var(--brand-orange)]">
                 Dopo
-              </h3>
+              </h2>
+
             </div>
             <p className="mt-4 text-center text-sm text-white/60 max-w-sm mx-auto">
               Una sola schermata. Apri il telefono e vedi quanto hai venduto, cosa rende e cosa
