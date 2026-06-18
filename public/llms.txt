@@ -1,0 +1,9 @@
+# ScalaShop
+
+> Il sistema operativo per il food retail artigianale italiano: gastronomie, salumerie, caseifici e botteghe alimentari. Vendite, scontrini, clienti, margini e ordini sotto controllo, anche dal telefono.
+
+ScalaShop è pensato in Italia per le botteghe italiane. Aiuta i titolari a capire quanto ordinare per non sprecare e non rimanere senza prodotto, a leggere i margini reali e a prendere decisioni migliori ogni giorno.
+
+## Pages
+
+- [Home](/): panoramica del prodotto, problema, soluzione, prova gratuita 14 giorni.

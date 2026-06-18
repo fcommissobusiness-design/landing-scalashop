@@ -8,7 +8,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Il sistema operativo per gastronomie, salumerie, caseifici e botteghe alimentari italiane. Vendite, scontrini, clienti, margini e ordini sotto controllo — anche dal telefono. Prova gratis 14 giorni.",
+          "Il sistema operativo per gastronomie, salumerie e botteghe alimentari italiane. Vendite, margini e ordini sotto controllo, anche dal telefono.",
       },
       { property: "og:title", content: "ScalaShop — Riprendi il controllo della tua attività" },
       {
@@ -18,8 +18,24 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:image", content: logoAsset.url },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://scalashop.lovable.app/" },
+    ],
+    links: [{ rel: "canonical", href: "https://scalashop.lovable.app/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "ScalaShop",
+          url: "https://scalashop.lovable.app/",
+          description:
+            "Il sistema operativo per il food retail artigianale italiano.",
+        }),
+      },
     ],
   }),
+
   component: Index,
 });
 
@@ -84,7 +100,7 @@ function Header() {
   return (
     <header className="border-b border-border bg-white">
       <div className="mx-auto flex max-w-6xl items-center justify-center sm:justify-between px-5 sm:px-6 py-5 sm:py-6">
-        <img src={logoAsset.url} alt="ScalaShop" className="h-28 sm:h-32 md:h-40 w-auto" />
+        <img src={logoAsset.url} alt="ScalaShop logo" className="h-28 sm:h-32 md:h-40 w-auto" />
         <a
           href={TRIAL_URL}
           target="_blank"
@@ -243,9 +259,10 @@ function Hero() {
         <div className="relative mt-12 sm:mt-16 grid items-start gap-12 lg:gap-12 lg:grid-cols-2">
           <div>
             <div className="flex justify-center lg:justify-start">
-              <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-[0.18em] text-white/90">
+              <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-[0.18em] text-white/90">
                 Prima
-              </h3>
+              </h2>
+
             </div>
             <p className="mt-4 text-center lg:text-left text-sm text-white/60 max-w-sm mx-auto lg:mx-0">
               Informazioni sparse tra carta, chat e memoria.
@@ -257,9 +274,10 @@ function Hero() {
 
           <div>
             <div className="flex justify-center">
-              <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-[0.18em] text-[var(--brand-orange)]">
+              <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-[0.18em] text-[var(--brand-orange)]">
                 Dopo
-              </h3>
+              </h2>
+
             </div>
             <p className="mt-4 text-center text-sm text-white/60 max-w-sm mx-auto">
               Una sola schermata. Apri il telefono e vedi quanto hai venduto, cosa rende e cosa
@@ -1059,7 +1077,7 @@ function Footer() {
   return (
     <footer className="bg-white border-t border-[var(--brand-navy)]/10">
       <div className="mx-auto max-w-6xl px-5 sm:px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-5">
-        <img src={logoAsset.url} alt="ScalaShop" className="h-20 sm:h-24 md:h-32 w-auto" />
+        <img src={logoAsset.url} alt="ScalaShop logo" className="h-20 sm:h-24 md:h-32 w-auto" />
         <p className="text-sm text-[var(--brand-navy)]/60 text-center sm:text-right">
           © {new Date().getFullYear()} ScalaShop
         </p>
