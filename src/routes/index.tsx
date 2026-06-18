@@ -923,7 +923,7 @@ function Outcome() {
     "cosa richiede attenzione adesso",
   ];
   return (
-    <section className="bg-white">
+    <section className="bg-[#fbf8f3] border-t border-[var(--brand-navy)]/10">
       <div className="mx-auto max-w-5xl px-5 sm:px-6 py-20 md:py-28">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] items-center">
           <div>
