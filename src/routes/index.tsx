@@ -905,7 +905,7 @@ function ReceiptsPillar() {
           </div>
         </div>
 
-        <SectionCTA tone="dark" bridge="Le somme sono già lì. Tu devi solo aprirle." />
+        <SectionCTA tone="dark" bridge="Apri il telefono. La tua giornata è già tutta lì." />
       </div>
     </section>
   );
