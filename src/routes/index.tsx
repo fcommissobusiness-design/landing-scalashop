@@ -434,12 +434,12 @@ function Pain() {
           </div>
         </div>
 
-        <div className="mt-14 pt-10">
-          <p className="text-2xl md:text-3xl font-semibold text-[var(--brand-navy)] leading-snug max-w-3xl">
+        <div className="mt-14 pt-10 text-center">
+          <p className="mx-auto text-2xl md:text-3xl font-semibold text-[var(--brand-navy)] leading-snug max-w-3xl">
             Finché il volume è basso sembra funzionare.{" "}
             <span className="text-[var(--brand-orange)]">Poi arrivano gli errori.</span>
           </p>
-          <p className="mt-3 text-lg text-[var(--brand-navy)]/70 max-w-3xl">
+          <p className="mx-auto mt-3 text-lg text-[var(--brand-navy)]/70 max-w-3xl">
             Le vendite che non quadrano. Gli ordini dimenticati. I clienti che non tornano e non
             sai perché.
           </p>
