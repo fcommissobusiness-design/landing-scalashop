@@ -655,6 +655,8 @@ function Differentiation() {
             ))}
           </div>
         </div>
+
+        <SectionCTA tone="dark" bridge="Oggi puoi provarlo gratuitamente." />
       </div>
     </section>
   );
@@ -765,6 +767,8 @@ function WasteReduction() {
             </div>
           </div>
         </div>
+
+        <SectionCTA bridge="Ordinare meglio. Sprecare meno. Da oggi." />
       </div>
     </section>
   );
@@ -814,6 +818,8 @@ function Benefits() {
             </div>
           ))}
         </div>
+
+        <SectionCTA bridge="Tutto quello che ti serve. Da subito." />
       </div>
     </section>
   );
@@ -898,6 +904,8 @@ function ReceiptsPillar() {
             </div>
           </div>
         </div>
+
+        <SectionCTA tone="dark" bridge="Le somme sono già lì. Tu devi solo aprirle." />
       </div>
     </section>
   );
@@ -920,14 +928,14 @@ function Outcome() {
         <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] items-center">
           <div>
             <span className="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-[var(--brand-orange)]">
-              Una nuova abitudine
+              Lo strumento che hai già in tasca
             </span>
             <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--brand-navy)] leading-[1.05]">
-              Apri il telefono. Sai tutto.
+              Tutto parte da qualcosa che usi già ogni giorno.
             </h2>
             <p className="mt-5 text-lg text-[var(--brand-navy)]/70 leading-relaxed">
-              Niente fogli da cercare, niente calcoli, niente "poi controllo a fine giornata".
-              Le risposte sono già lì, dove servono.
+              ScalaShop non ti chiede di cambiare abitudini. Si inserisce in quella che hai già:
+              guardare il telefono. Apri l'app e in un secondo sai tutto della tua attività.
             </p>
             <ul className="mt-7 space-y-2.5">
               {items.map((t) => (
@@ -946,6 +954,8 @@ function Outcome() {
             <PhoneMockup compact />
           </div>
         </div>
+
+        <SectionCTA bridge="Lo strumento ce l'hai già. Manca solo ScalaShop." />
       </div>
     </section>
   );
@@ -961,7 +971,15 @@ function FinalCTA() {
         <div className="absolute -top-24 left-1/3 h-96 w-96 rounded-full bg-[var(--brand-orange)]/15 blur-[120px]" />
       </div>
       <div className="relative mx-auto max-w-4xl px-5 sm:px-6 py-20 md:py-28 text-center">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.05]">
+        <div className="inline-flex items-center gap-2 mb-6">
+          <span className="h-1.5 w-6 rounded-full bg-[#008C45]" />
+          <span className="h-1.5 w-6 rounded-full bg-white/90" />
+          <span className="h-1.5 w-6 rounded-full bg-[#CD212A]" />
+        </div>
+        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-[var(--brand-orange)]">
+          Pensato in Italia. Per le botteghe italiane.
+        </p>
+        <h2 className="mt-5 text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.05]">
           Riprendi il controllo della tua attività.
         </h2>
         <div className="mt-8 flex flex-wrap justify-center gap-2.5">
@@ -977,7 +995,7 @@ function FinalCTA() {
         <p className="mt-6 text-lg text-white/80">Tutto in un unico sistema.</p>
         <div className="mt-10 flex flex-col items-center gap-3">
           <PrimaryCTA size="lg">Provalo Gratuitamente per 14 Giorni</PrimaryCTA>
-          <span className="text-sm text-white/60">Demo disponibile fino al 31 luglio 2026</span>
+          <span className="text-sm text-white/60">Nessuna carta richiesta • Attivazione in giornata</span>
         </div>
       </div>
     </section>
@@ -1003,6 +1021,10 @@ function FAQ() {
     {
       q: "Funziona da telefono?",
       a: "Sì. ScalaShop è pensato soprattutto per essere usato durante la giornata dallo smartphone. Mentre sei al banco, in laboratorio o in negozio, hai sempre le informazioni che ti servono. È ottimizzato anche per desktop.",
+    },
+    {
+      q: "È collegato al registratore di cassa?",
+      a: "Sì. ScalaShop può dialogare con il registratore di cassa e registrare automaticamente le informazioni relative agli scontrini, aggiornando in tempo reale l'andamento della giornata e centralizzando i dati in un unico sistema.",
     },
     {
       q: "Mi aiuta davvero a ridurre gli sprechi?",
@@ -1037,9 +1059,9 @@ function Footer() {
   return (
     <footer className="bg-white border-t border-[var(--brand-navy)]/10">
       <div className="mx-auto max-w-6xl px-5 sm:px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-5">
-        <img src={logoAsset.url} alt="ScalaShop" className="h-14 sm:h-16 md:h-20 w-auto" />
+        <img src={logoAsset.url} alt="ScalaShop" className="h-16 sm:h-20 md:h-24 w-auto" />
         <p className="text-sm text-[var(--brand-navy)]/60 text-center sm:text-right">
-          © {new Date().getFullYear()} ScalaShop · Pensato in Italia per le botteghe italiane · Made in Italy
+          © {new Date().getFullYear()} ScalaShop
         </p>
       </div>
     </footer>
