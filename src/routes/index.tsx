@@ -256,12 +256,12 @@ function Hero() {
           </div>
 
           <div>
-            <div className="flex justify-center lg:justify-start">
+            <div className="flex justify-center">
               <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-[0.18em] text-[var(--brand-orange)]">
                 Dopo
               </h3>
             </div>
-            <p className="mt-4 text-center lg:text-left text-sm text-white/60 max-w-sm mx-auto lg:mx-0">
+            <p className="mt-4 text-center text-sm text-white/60 max-w-sm mx-auto">
               Una sola schermata. Apri il telefono e vedi quanto hai venduto, cosa rende e cosa
               serve fare adesso.
             </p>
