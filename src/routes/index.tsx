@@ -84,7 +84,7 @@ function Header() {
   return (
     <header className="border-b border-border bg-white">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 sm:px-6 py-5 sm:py-6">
-        <img src={logoAsset.url} alt="ScalaShop" className="h-20 sm:h-24 md:h-28 w-auto" />
+        <img src={logoAsset.url} alt="ScalaShop" className="h-28 sm:h-32 md:h-40 w-auto" />
         <a
           href={TRIAL_URL}
           target="_blank"
