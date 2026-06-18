@@ -8,7 +8,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Il sistema operativo per gastronomie, salumerie, caseifici e botteghe alimentari italiane. Vendite, scontrini, clienti, margini e ordini sotto controllo — anche dal telefono. Prova gratis 14 giorni.",
+          "Il sistema operativo per gastronomie, salumerie e botteghe alimentari italiane. Vendite, margini e ordini sotto controllo, anche dal telefono.",
       },
       { property: "og:title", content: "ScalaShop — Riprendi il controllo della tua attività" },
       {
@@ -18,8 +18,24 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:image", content: logoAsset.url },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://scalashop.lovable.app/" },
+    ],
+    links: [{ rel: "canonical", href: "https://scalashop.lovable.app/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "ScalaShop",
+          url: "https://scalashop.lovable.app/",
+          description:
+            "Il sistema operativo per il food retail artigianale italiano.",
+        }),
+      },
     ],
   }),
+
   component: Index,
 });
 
