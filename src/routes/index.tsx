@@ -38,11 +38,11 @@ const tickerItems = [
 function Ticker() {
   const items = [...tickerItems, ...tickerItems];
   return (
-    <div className="sticky top-0 z-50 overflow-hidden bg-[var(--brand-navy)] text-white border-b border-white/10">
-      <div className="flex w-max animate-marquee whitespace-nowrap py-2 text-xs sm:text-sm font-medium">
+    <div className="sticky top-0 z-50 overflow-hidden bg-[var(--brand-orange)] text-[var(--brand-navy)] border-b border-[var(--brand-navy)]/10">
+      <div className="flex w-max animate-marquee whitespace-nowrap py-2 text-xs sm:text-sm font-semibold">
         {items.map((t, i) => (
           <span key={i} className="mx-6 sm:mx-8 inline-flex items-center gap-2">
-            <span className="text-[var(--brand-orange)]">✓</span>
+            <span className="text-[var(--brand-navy)]">✓</span>
             {t}
           </span>
         ))}
@@ -83,15 +83,15 @@ function PrimaryCTA({
 function Header() {
   return (
     <header className="border-b border-border bg-white">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 sm:px-6 py-4 sm:py-5">
-        <img src={logoAsset.url} alt="ScalaShop" className="h-14 sm:h-16 md:h-20 w-auto" />
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 sm:px-6 py-5 sm:py-6">
+        <img src={logoAsset.url} alt="ScalaShop" className="h-20 sm:h-24 md:h-28 w-auto" />
         <a
           href={TRIAL_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden sm:inline-flex items-center justify-center rounded-md bg-[var(--brand-orange)] px-5 py-2.5 text-sm font-semibold text-[var(--brand-navy)] hover:brightness-95"
+          className="hidden sm:inline-flex items-center justify-center rounded-md bg-[var(--brand-orange)] px-6 py-3 text-base font-semibold text-[var(--brand-navy)] shadow-[0_10px_24px_-10px_rgba(245,166,35,0.7)] hover:brightness-95"
         >
-          Provalo Gratis 14 Giorni
+          Provalo Gratuitamente per 14 Giorni
         </a>
       </div>
     </header>
@@ -115,40 +115,33 @@ function StageLabel({ children, tone = "muted" }: { children: React.ReactNode; t
 }
 
 function BeforeBoard() {
-  // rappresentazione elegante: lista di "fonti sparse" tra cui il titolare salta tutto il giorno
   const sources = [
-    { tag: "WhatsApp", text: "“Mi tieni 3 etti di parmigiano per sabato?”", meta: "12 chat aperte" },
-    { tag: "Quaderno cassa", text: "Mar 11 — incasso ~ 340 (?) da ricontrollare", meta: "pagina 12" },
-    { tag: "Post-it banco", text: "Sig.ra Bianchi — vassoio misto, ritira sabato 09:30", meta: "scritto ieri" },
-    { tag: "Excel", text: "margini_v3_FINAL.xlsx", meta: "modificato 14 giorni fa" },
-    { tag: "A memoria", text: "Quanto ho venduto davvero ieri? E mercoledì scorso?", meta: "—" },
+    { tag: "WhatsApp", text: "“Mi tieni 3 etti di parmigiano per sabato?”" },
+    { tag: "Quaderno cassa", text: "Mar 11 — incasso ~ 340 (?) da ricontrollare" },
+    { tag: "Post-it", text: "Sig.ra Bianchi — vassoio misto, ritira sabato 09:30" },
+    { tag: "Excel", text: "margini_v3_FINAL.xlsx" },
+    { tag: "Memoria", text: "Quanto ho venduto davvero ieri? E mercoledì scorso?" },
   ];
   return (
     <div className="relative w-full">
       <div className="rounded-xl border border-white/15 bg-white/[0.04] p-5 sm:p-6 backdrop-blur-sm">
         <div className="flex items-center justify-between">
           <p className="text-[11px] uppercase tracking-[0.25em] text-white/60">Le tue informazioni, oggi</p>
-          <span className="text-[11px] font-semibold text-red-300/90">5 fonti diverse</span>
+          <span className="text-[11px] font-semibold text-red-300/90">Mille posti diversi</span>
         </div>
+        <p className="mt-3 text-sm text-white/75 leading-snug">
+          Oggi le informazioni della tua attività sono sparse in mille posti diversi.
+        </p>
         <ul className="mt-4 divide-y divide-white/10">
           {sources.map((s) => (
-            <li key={s.tag} className="grid grid-cols-[auto_1fr_auto] items-center gap-3 py-3">
+            <li key={s.tag} className="grid grid-cols-[auto_1fr] items-center gap-3 py-3">
               <span className="inline-flex h-7 items-center rounded-sm bg-white/10 px-2 text-[10px] font-bold uppercase tracking-wider text-white/80">
                 {s.tag}
               </span>
               <span className="text-sm text-white/90 leading-snug">{s.text}</span>
-              <span className="hidden sm:inline text-[10px] uppercase tracking-wider text-white/40">
-                {s.meta}
-              </span>
             </li>
           ))}
         </ul>
-        <div className="mt-4 flex items-center justify-between rounded-md bg-red-500/10 border border-red-400/20 px-3 py-2">
-          <span className="text-[12px] text-red-200/90">
-            Per sapere com'è andata oggi devi aprire tutto.
-          </span>
-          <span className="text-[11px] font-semibold text-red-300/90">~ 3–5h / settimana</span>
-        </div>
       </div>
     </div>
   );
@@ -235,28 +228,27 @@ function Hero() {
 
       <div className="relative mx-auto max-w-6xl px-5 sm:px-6 pt-12 sm:pt-20 pb-16 md:pb-24">
         <div className="max-w-3xl">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-3 py-1 text-[11px] sm:text-xs font-medium uppercase tracking-widest text-white/80">
-            <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-orange)]" />
-            Pensato in Italia · per gastronomie, salumerie, caseifici e botteghe
-          </span>
-          <h1 className="mt-5 text-[2.1rem] leading-[1.05] sm:text-5xl md:text-6xl font-bold tracking-tight">
+          <h1 className="text-[2.1rem] leading-[1.05] sm:text-5xl md:text-6xl font-bold tracking-tight">
             Riprendi il controllo
             <br />
             della tua <span className="text-[var(--brand-orange)]">attività.</span>
           </h1>
           <p className="mt-5 text-base sm:text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl">
-            Vendite, scontrini, clienti, margini e ordini sotto controllo in un unico sistema.
-            Anche dal telefono, mentre sei al banco.
+            Vendite, scontrini, clienti, margini, ordini e riordini senza sprechi:
+            tutto in un unico sistema. Anche dal telefono, mentre sei al banco.
           </p>
         </div>
 
         {/* PRIMA / DOPO */}
-        <div className="relative mt-10 sm:mt-14 grid items-start gap-10 lg:gap-10 lg:grid-cols-2">
+        <div className="relative mt-12 sm:mt-16 grid items-start gap-12 lg:gap-12 lg:grid-cols-2">
           <div>
-            <StageLabel>Prima</StageLabel>
-            <p className="mt-3 text-sm text-white/60 max-w-sm">
-              Informazioni sparse tra carta, chat e memoria. Per sapere com'è andata la giornata
-              devi mettere insieme tu i pezzi.
+            <div className="flex justify-center lg:justify-start">
+              <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-[0.18em] text-white/90">
+                Prima
+              </h3>
+            </div>
+            <p className="mt-4 text-center lg:text-left text-sm text-white/60 max-w-sm mx-auto lg:mx-0">
+              Informazioni sparse tra carta, chat e memoria.
             </p>
             <div className="mt-5">
               <BeforeBoard />
@@ -264,8 +256,12 @@ function Hero() {
           </div>
 
           <div>
-            <StageLabel tone="accent">Dopo · con ScalaShop</StageLabel>
-            <p className="mt-3 text-sm text-white/60 max-w-sm">
+            <div className="flex justify-center lg:justify-start">
+              <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-[0.18em] text-[var(--brand-orange)]">
+                Dopo
+              </h3>
+            </div>
+            <p className="mt-4 text-center lg:text-left text-sm text-white/60 max-w-sm mx-auto lg:mx-0">
               Una sola schermata. Apri il telefono e vedi quanto hai venduto, cosa rende e cosa
               serve fare adesso.
             </p>
@@ -275,10 +271,10 @@ function Hero() {
           </div>
         </div>
 
-        <div className="mt-10 sm:mt-12 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+        <div className="mt-12 flex flex-col items-center gap-3 text-center">
           <PrimaryCTA size="lg">Provalo Gratuitamente per 14 Giorni</PrimaryCTA>
-          <span className="text-sm text-white/60">
-            Nessuna carta richiesta · attivazione in giornata
+          <span className="text-xs sm:text-sm text-white/55">
+            Nessuna carta richiesta • Attivazione in giornata
           </span>
         </div>
       </div>
@@ -286,9 +282,42 @@ function Hero() {
   );
 }
 
+/* ---------- SECTION CTA (riusabile) ---------- */
+
+function SectionCTA({
+  bridge,
+  tone = "light",
+}: {
+  bridge: string;
+  tone?: "light" | "dark";
+}) {
+  const isDark = tone === "dark";
+  return (
+    <div className="mt-12 flex flex-col items-center gap-4 text-center">
+      <p
+        className={`text-xl sm:text-2xl font-semibold leading-snug max-w-2xl ${
+          isDark ? "text-white" : "text-[var(--brand-navy)]"
+        }`}
+      >
+        {bridge}
+      </p>
+      <PrimaryCTA size="lg">Provalo Gratuitamente per 14 Giorni</PrimaryCTA>
+      <span className={`text-xs sm:text-sm ${isDark ? "text-white/55" : "text-[var(--brand-navy)]/55"}`}>
+        Nessuna carta richiesta • Attivazione in giornata
+      </span>
+    </div>
+  );
+}
+
 /* ---------- STORYTELLING — Francesco ---------- */
 
 function Story() {
+  const problems = [
+    "Ordini",
+    "Prodotti da riordinare",
+    "Margini controllati da Excel",
+    "Clienti abituali ricordati a memoria",
+  ];
   return (
     <section className="bg-[#fbf8f3]">
       <div className="mx-auto max-w-5xl px-5 sm:px-6 py-20 md:py-28">
@@ -301,8 +330,7 @@ function Story() {
               Nasce dentro una bottega del Centro Italia.
             </h2>
             <p className="mt-5 text-[var(--brand-navy)]/70 italic">
-              Non da una startup. Non da un brainstorming. Da un titolare che non riusciva più
-              a tenere tutto a mente.
+              Da un titolare che non riusciva più a tenere tutto a mente.
             </p>
           </div>
 
@@ -314,26 +342,35 @@ function Story() {
                 in un paese del Centro Italia. L'attività andava bene: i clienti c'erano, gli
                 incassi pure. Il problema non era il fatturato.
               </p>
-              <p>
-                Era il <strong>controllo</strong>. Gli ordini su WhatsApp. I prodotti da
-                riordinare sul quaderno. I margini su un Excel che apriva una volta al mese.
-                I clienti abituali nella sua testa.
-              </p>
-              <p className="border-l-2 border-[var(--brand-orange)] pl-4 text-[var(--brand-navy)] font-medium">
-                Ogni nuova informazione aumentava il caos. Non l'organizzazione.
+              <p>Era il <strong>controllo</strong>.</p>
+              <ul className="space-y-2.5">
+                {problems.map((p) => (
+                  <li key={p} className="flex gap-3">
+                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--brand-orange)] shrink-0" />
+                    <span className="text-[var(--brand-navy)]">{p}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="rounded-md bg-[var(--brand-orange)]/15 border-l-4 border-[var(--brand-orange)] px-5 py-4 text-[var(--brand-navy)] font-semibold">
+                Ogni nuova informazione aumentava il caos,
+                <span className="text-[var(--brand-orange)]"> non l'organizzazione.</span>
               </p>
               <p>
                 Da lì è nata l'idea di ScalaShop: un unico sistema, un unico punto di controllo.
                 Un solo posto dove vedere tutto. Costruito al banco, accanto a chi quel banco
                 lo apre tutte le mattine.
               </p>
-              <p className="text-[var(--brand-navy)]/60 text-sm">
-                Oggi quella stessa logica può vivere nella tua bottega, nel tuo caseificio,
-                nella tua salumeria.
-              </p>
             </div>
           </div>
         </div>
+
+        <div className="mt-16 text-center">
+          <p className="mx-auto max-w-2xl text-xl sm:text-2xl font-medium italic text-[var(--brand-navy)]/80 leading-snug">
+            Oggi quella stessa logica può vivere nella tua attività.
+          </p>
+        </div>
+
+        <SectionCTA bridge="Inizia oggi a tenere tutto sotto controllo." />
       </div>
     </section>
   );
@@ -348,7 +385,7 @@ function Pain() {
     "il fornitore di latticini da richiamare",
     "quanto hai venduto davvero ieri",
     "chi non viene più da due settimane",
-    "quanto ordinare di lasagne per domenica",
+    "quanta mozzarella ordinare per domenica",
   ];
   return (
     <section className="relative overflow-hidden bg-white">
@@ -358,15 +395,12 @@ function Pain() {
             <span className="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-[var(--brand-orange)]">
               Il vero problema
             </span>
-            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.05] text-[var(--brand-navy)]">
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1] text-[var(--brand-navy)]">
               Il problema non è che lavori troppo.
               <br />
-              <span className="relative inline-block mt-2">
-                <span className="relative z-10">È che devi ricordare tutto.</span>
-                <span className="absolute left-0 bottom-1 h-3 w-full bg-[var(--brand-orange)]/30 -z-0" />
-              </span>
+              È che devi <span className="text-[var(--brand-orange)]">ricordare tutto</span>.
               <br />
-              <span className="text-[var(--brand-navy)]/60">E questo è impossibile.</span>
+              E questo è <span className="text-[var(--brand-orange)]">impossibile</span>.
             </h2>
             <p className="mt-7 text-lg text-[var(--brand-navy)]/75 leading-relaxed max-w-md">
               Tutto vive in un posto solo: <strong>la tua testa</strong>. E quando la testa è
@@ -374,7 +408,6 @@ function Pain() {
             </p>
           </div>
 
-          {/* lista pulita, no post-it */}
           <div className="rounded-xl border border-[var(--brand-navy)]/10 bg-secondary/40 p-6 sm:p-8">
             <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--brand-navy)]/60">
               Ogni giorno devi ricordare
@@ -394,14 +427,14 @@ function Pain() {
               <li className="grid grid-cols-[auto_1fr] items-center gap-4 py-3.5">
                 <span className="text-xs font-bold tabular-nums text-[var(--brand-orange)]">…</span>
                 <span className="text-base sm:text-lg text-[var(--brand-navy)]/60 italic">
-                  e altre venti cose, ogni singolo giorno.
+                  e altre venti cose, ogni singolo giorno…
                 </span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-14 border-t border-[var(--brand-navy)]/10 pt-10">
+        <div className="mt-14 pt-10">
           <p className="text-2xl md:text-3xl font-semibold text-[var(--brand-navy)] leading-snug max-w-3xl">
             Finché il volume è basso sembra funzionare.{" "}
             <span className="text-[var(--brand-orange)]">Poi arrivano gli errori.</span>
@@ -411,6 +444,8 @@ function Pain() {
             sai perché.
           </p>
         </div>
+
+        <SectionCTA bridge="Smetti di gestire tutto a memoria. Riprendi il controllo già da oggi." />
       </div>
     </section>
   );
@@ -422,21 +457,21 @@ function HiddenCost() {
   const losses = [
     {
       n: "01",
-      kpi: "~ 1 cliente al giorno",
-      t: "che non richiami",
-      d: "Non sai chi è, non sai cosa compra di solito. In un anno fanno centinaia di scontrini in meno.",
+      kpi: "Riordini fatti a sentimento",
+      t: "",
+      d: "Giorni in cui finisci il prodotto troppo presto. Giorni in cui ne rimane troppo e sei costretto a svenderlo o buttarlo.",
     },
     {
       n: "02",
-      kpi: "3–5 ore a settimana",
-      t: "a cercare informazioni",
-      d: "Ore passate a ricostruire vendite, ordini e scadenze da fonti diverse. Tempo che non recuperi mai.",
+      kpi: "Prodotti venduti",
+      t: "senza sapere se generano margine",
+      d: "Continui a venderli convinto che rendano. Senza dati reali, non sai mai quali ti stanno davvero pagando lo stipendio.",
     },
     {
       n: "03",
-      kpi: "Prodotti in perdita",
-      t: "che continui a vendere",
-      d: "Senza margini reali non lo sai. Lavori, sudi, e a fine mese non torna come dovrebbe.",
+      kpi: "3–5 ore a settimana",
+      t: "perse a cercare informazioni",
+      d: "Ore passate a ricostruire vendite, ordini e scadenze da fonti diverse. Tempo che non recuperi mai.",
     },
   ];
   return (
@@ -469,23 +504,19 @@ function HiddenCost() {
               <span className="text-[11px] font-bold tabular-nums tracking-widest text-[var(--brand-orange)]">
                 {l.n}
               </span>
-              <p className="mt-3 text-3xl sm:text-[2rem] font-bold leading-tight text-[var(--brand-orange)]">
+              <p className="mt-3 text-2xl sm:text-[1.7rem] font-bold leading-tight text-[var(--brand-orange)]">
                 {l.kpi}
               </p>
-              <p className="mt-1 text-lg font-semibold text-white">{l.t}</p>
+              {l.t && <p className="mt-1 text-lg font-semibold text-white">{l.t}</p>}
               <p className="mt-3 text-[15px] text-white/70 leading-relaxed">{l.d}</p>
             </div>
           ))}
         </div>
 
-        <div className="mt-12">
-          <p className="text-2xl md:text-3xl font-semibold leading-snug max-w-3xl">
-            Il risultato è sempre lo stesso:{" "}
-            <span className="text-[var(--brand-orange)]">
-              lavori sempre di più, hai sempre meno controllo.
-            </span>
-          </p>
-        </div>
+        <SectionCTA
+          tone="dark"
+          bridge="Il problema non è lavorare di più. È avere meno controllo."
+        />
       </div>
     </section>
   );
@@ -494,46 +525,50 @@ function HiddenCost() {
 /* ---------- POSITIONING ---------- */
 
 function Positioning() {
-  const not = [
-    "un ERP da multinazionale",
-    "un software pieno di funzioni che non userai",
-    "un gestionale fiscale dove cercare cose",
-    "un sistema che richiede un consulente per ogni modifica",
+  const heavy = [
+    "È potente.",
+    "Ma è complessa.",
+    "Richiede tempo.",
+    "Richiede formazione.",
+    "Richiede persone dedicate.",
+    "Richiede budget.",
   ];
   return (
     <section className="bg-white">
       <div className="mx-auto max-w-6xl px-5 sm:px-6 py-20 md:py-28">
         <div className="max-w-3xl">
           <span className="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-[var(--brand-orange)]">
-            Il posizionamento
+            Cos'è ScalaShop
           </span>
           <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--brand-navy)] leading-[1.05]">
-            ScalaShop non è un altro gestionale.
+            Non è l'ennesimo gestionale.
           </h2>
           <p className="mt-5 text-lg text-[var(--brand-navy)]/70 leading-relaxed">
-            La maggior parte dei software per il retail sono pensati per chi sta in ufficio,
-            non per chi sta al banco. Sono potenti, sì, ma chiedono tempo, formazione e
-            qualcuno che li tenga in piedi.
+            La maggior parte dei software è pensata per attività molto più grandi della tua.
+            Strumenti costruiti per realtà diverse dalla tua, dove il titolare non sta al banco.
           </p>
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-12 items-stretch">
-          {/* NON */}
+          {/* L'altro mondo */}
           <div className="lg:col-span-5 rounded-lg border border-[var(--brand-navy)]/10 p-6 bg-secondary/40">
             <p className="text-[11px] font-bold uppercase tracking-widest text-[var(--brand-navy)]/60">
-              ScalaShop NON è
+              Il software classico
             </p>
-            <ul className="mt-4 space-y-3 text-[var(--brand-navy)]/80">
-              {not.map((t) => (
+            <ul className="mt-4 space-y-2.5 text-[var(--brand-navy)]/80">
+              {heavy.map((t) => (
                 <li key={t} className="flex gap-3">
-                  <span className="text-[var(--brand-navy)]/40 mt-1">✕</span>
-                  <span>{t}</span>
+                  <span className="text-[var(--brand-navy)]/40 mt-1">—</span>
+                  <span className="font-medium">{t}</span>
                 </li>
               ))}
             </ul>
+            <p className="mt-5 text-sm text-[var(--brand-navy)]/60 italic">
+              Pensato per chi ha un ufficio dedicato. Non per chi apre il negozio alle 6.
+            </p>
           </div>
 
-          {/* È — dominante */}
+          {/* ScalaShop — dominante */}
           <div className="lg:col-span-7 relative rounded-2xl bg-[var(--brand-navy)] p-8 sm:p-10 text-white shadow-[0_40px_80px_-30px_rgba(26,46,74,0.5)] overflow-hidden">
             <div className="pointer-events-none absolute -top-20 -right-16 h-72 w-72 rounded-full bg-[var(--brand-orange)]/25 blur-[100px]" />
             <div className="pointer-events-none absolute -bottom-24 -left-10 h-64 w-64 rounded-full bg-[var(--brand-orange)]/10 blur-[100px]" />
@@ -546,24 +581,26 @@ function Positioning() {
               </p>
               <p className="mt-4 text-white/80 leading-relaxed text-base sm:text-lg max-w-xl">
                 Uno strumento unico, pensato per chi vende ogni giorno al banco.
-                Veloce da usare, utile dal primo giorno e progettato per girare sul
-                telefono che hai già in tasca.
+                Veloce, utile dal primo giorno, collegato al registratore di cassa
+                e progettato per girare sul telefono che hai già in tasca.
               </p>
-              <div className="mt-6 grid grid-cols-3 gap-3">
+              <ul className="mt-7 space-y-3 text-white/90">
                 {[
-                  ["1", "schermata"],
-                  ["3", "tap per decidere"],
-                  ["0", "consulenti necessari"],
-                ].map(([k, v]) => (
-                  <div key={v} className="rounded-md bg-white/5 border border-white/10 px-3 py-3">
-                    <p className="text-2xl font-bold text-[var(--brand-orange)] leading-none">{k}</p>
-                    <p className="mt-1 text-[11px] uppercase tracking-wider text-white/60">{v}</p>
-                  </div>
+                  "Sistema collegato al registratore di cassa",
+                  "Un solo posto per tutto. Sempre a portata di mano.",
+                  "Zero tecnici necessari.",
+                ].map((t) => (
+                  <li key={t} className="flex gap-3">
+                    <span className="text-[var(--brand-orange)] font-bold mt-0.5">✓</span>
+                    <span className="text-base sm:text-lg">{t}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </div>
         </div>
+
+        <SectionCTA bridge="Cosa stai aspettando?" />
       </div>
     </section>
   );
@@ -586,12 +623,12 @@ function Differentiation() {
               <span className="text-[var(--brand-orange)]">Non in una sala riunioni.</span>
             </h2>
             <p className="mt-6 text-lg text-white/80 leading-relaxed">
-              ScalaShop nasce dentro una gastronomia italiana vera. Ogni funzione esiste
+              ScalaShop nasce dentro una gastronomia vera. Ogni funzione esiste
               perché un titolare l'ha chiesta, l'ha provata e l'ha vista funzionare nel suo negozio.
             </p>
             <p className="mt-4 text-lg text-white/80 leading-relaxed">
-              Niente menù infiniti. Niente schermate da imparare a memoria. Solo le informazioni
-              che ti servono per decidere oggi, in giornata.
+              Solo le informazioni che ti servono per prendere decisioni immediatamente.
+              E per monitorare ogni giorno l'andamento reale della tua attività.
             </p>
           </div>
 
@@ -618,6 +655,8 @@ function Differentiation() {
             ))}
           </div>
         </div>
+
+        <SectionCTA tone="dark" bridge="Oggi puoi provarlo gratuitamente." />
       </div>
     </section>
   );
@@ -728,6 +767,8 @@ function WasteReduction() {
             </div>
           </div>
         </div>
+
+        <SectionCTA bridge="Ordinare meglio. Sprecare meno. Da oggi." />
       </div>
     </section>
   );
@@ -777,6 +818,8 @@ function Benefits() {
             </div>
           ))}
         </div>
+
+        <SectionCTA bridge="Tutto quello che ti serve. Da subito." />
       </div>
     </section>
   );
@@ -861,6 +904,8 @@ function ReceiptsPillar() {
             </div>
           </div>
         </div>
+
+        <SectionCTA tone="dark" bridge="Le somme sono già lì. Tu devi solo aprirle." />
       </div>
     </section>
   );
@@ -883,14 +928,14 @@ function Outcome() {
         <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] items-center">
           <div>
             <span className="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-[var(--brand-orange)]">
-              Una nuova abitudine
+              Lo strumento che hai già in tasca
             </span>
             <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--brand-navy)] leading-[1.05]">
-              Apri il telefono. Sai tutto.
+              Tutto parte da qualcosa che usi già ogni giorno.
             </h2>
             <p className="mt-5 text-lg text-[var(--brand-navy)]/70 leading-relaxed">
-              Niente fogli da cercare, niente calcoli, niente "poi controllo a fine giornata".
-              Le risposte sono già lì, dove servono.
+              ScalaShop non ti chiede di cambiare abitudini. Si inserisce in quella che hai già:
+              guardare il telefono. Apri l'app e in un secondo sai tutto della tua attività.
             </p>
             <ul className="mt-7 space-y-2.5">
               {items.map((t) => (
@@ -909,6 +954,8 @@ function Outcome() {
             <PhoneMockup compact />
           </div>
         </div>
+
+        <SectionCTA bridge="Lo strumento ce l'hai già. Manca solo ScalaShop." />
       </div>
     </section>
   );
@@ -924,7 +971,15 @@ function FinalCTA() {
         <div className="absolute -top-24 left-1/3 h-96 w-96 rounded-full bg-[var(--brand-orange)]/15 blur-[120px]" />
       </div>
       <div className="relative mx-auto max-w-4xl px-5 sm:px-6 py-20 md:py-28 text-center">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.05]">
+        <div className="inline-flex items-center gap-2 mb-6">
+          <span className="h-1.5 w-6 rounded-full bg-[#008C45]" />
+          <span className="h-1.5 w-6 rounded-full bg-white/90" />
+          <span className="h-1.5 w-6 rounded-full bg-[#CD212A]" />
+        </div>
+        <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-[var(--brand-orange)]">
+          Pensato in Italia. Per le botteghe italiane.
+        </p>
+        <h2 className="mt-5 text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.05]">
           Riprendi il controllo della tua attività.
         </h2>
         <div className="mt-8 flex flex-wrap justify-center gap-2.5">
@@ -940,7 +995,7 @@ function FinalCTA() {
         <p className="mt-6 text-lg text-white/80">Tutto in un unico sistema.</p>
         <div className="mt-10 flex flex-col items-center gap-3">
           <PrimaryCTA size="lg">Provalo Gratuitamente per 14 Giorni</PrimaryCTA>
-          <span className="text-sm text-white/60">Demo disponibile fino al 31 luglio 2026</span>
+          <span className="text-sm text-white/60">Nessuna carta richiesta • Attivazione in giornata</span>
         </div>
       </div>
     </section>
@@ -966,6 +1021,10 @@ function FAQ() {
     {
       q: "Funziona da telefono?",
       a: "Sì. ScalaShop è pensato soprattutto per essere usato durante la giornata dallo smartphone. Mentre sei al banco, in laboratorio o in negozio, hai sempre le informazioni che ti servono. È ottimizzato anche per desktop.",
+    },
+    {
+      q: "È collegato al registratore di cassa?",
+      a: "Sì. ScalaShop può dialogare con il registratore di cassa e registrare automaticamente le informazioni relative agli scontrini, aggiornando in tempo reale l'andamento della giornata e centralizzando i dati in un unico sistema.",
     },
     {
       q: "Mi aiuta davvero a ridurre gli sprechi?",
@@ -1000,9 +1059,9 @@ function Footer() {
   return (
     <footer className="bg-white border-t border-[var(--brand-navy)]/10">
       <div className="mx-auto max-w-6xl px-5 sm:px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-5">
-        <img src={logoAsset.url} alt="ScalaShop" className="h-14 sm:h-16 md:h-20 w-auto" />
+        <img src={logoAsset.url} alt="ScalaShop" className="h-16 sm:h-20 md:h-24 w-auto" />
         <p className="text-sm text-[var(--brand-navy)]/60 text-center sm:text-right">
-          © {new Date().getFullYear()} ScalaShop · Pensato in Italia per le botteghe italiane · Made in Italy
+          © {new Date().getFullYear()} ScalaShop
         </p>
       </div>
     </footer>
