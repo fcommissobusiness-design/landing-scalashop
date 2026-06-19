@@ -48,6 +48,7 @@ const tickerItems = [
   "Il sistema operativo per il food retail artigianale italiano",
   "Tutta la tua attività sotto controllo, anche dal telefono",
   "Demo gratuita disponibile fino al 31 luglio 2026",
+  "Solo 7 posti disponibili",
   "Configurazione personalizzata disponibile",
 ];
 
