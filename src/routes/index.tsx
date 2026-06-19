@@ -1014,7 +1014,32 @@ function FinalCTA() {
         <div className="mt-10 flex flex-col items-center gap-3">
           <PrimaryCTA size="lg">Provalo Gratuitamente per 14 Giorni</PrimaryCTA>
           <span className="text-sm text-white/60">Nessuna carta richiesta • Attivazione in giornata</span>
+          <div className="mt-4 w-full max-w-sm">
+            <div className="flex items-center justify-between text-[11px] font-semibold uppercase tracking-[0.18em] mb-2">
+              <span className="text-white/70">Posti disponibili</span>
+              <span className="text-[var(--brand-orange)]">Solo 7 rimasti</span>
+            </div>
+            <div
+              role="progressbar"
+              aria-valuenow={3}
+              aria-valuemin={0}
+              aria-valuemax={10}
+              aria-label="3 posti su 10 già occupati"
+              className="relative h-2.5 w-full rounded-full bg-white/10 border border-white/15 overflow-visible"
+            >
+              <div
+                className="slots-bar-fill absolute left-0 top-0 bottom-0 rounded-full"
+                style={{ width: "30%" }}
+              />
+              <span
+                className="slots-bar-dot absolute top-1/2 h-3.5 w-3.5 rounded-full bg-[var(--brand-orange)] border border-white/40"
+                style={{ left: "30%" }}
+                aria-hidden="true"
+              />
+            </div>
+          </div>
         </div>
+
       </div>
     </section>
   );
