@@ -1104,9 +1104,17 @@ function Footer() {
     <footer className="bg-white border-t border-[var(--brand-navy)]/10">
       <div className="mx-auto max-w-6xl px-5 sm:px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-5">
         <img src={logoAsset.url} alt="ScalaShop logo" className="h-20 sm:h-24 md:h-32 w-auto" />
-        <p className="text-sm text-[var(--brand-navy)]/60 text-center sm:text-right">
-          © {new Date().getFullYear()} ScalaShop
-        </p>
+        <div className="flex flex-col sm:items-end items-center gap-2">
+          <a
+            href="/cookie-policy"
+            className="text-sm text-[var(--brand-navy)]/70 hover:text-[var(--brand-navy)] underline underline-offset-4"
+          >
+            Cookie Policy
+          </a>
+          <p className="text-sm text-[var(--brand-navy)]/60 text-center sm:text-right">
+            © {new Date().getFullYear()} ScalaShop
+          </p>
+        </div>
       </div>
     </footer>
   );
