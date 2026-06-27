@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import logoAsset from "@/assets/scalashop-logo.png.asset.json";
 import demoVideoAsset from "@/assets/demo-scalashop.mp4.asset.json";
+import posterAsset from "@/assets/video-poster.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -1178,7 +1179,7 @@ function VideoDemo() {
               preload="metadata"
               controlsList="nodownload"
               className="block w-full h-auto aspect-video"
-              poster=""
+              poster={posterAsset.url}
             >
               Il tuo browser non supporta la riproduzione video.
             </video>
