@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import logoAsset from "@/assets/scalashop-logo.png.asset.json";
+import demoVideoAsset from "@/assets/demo-scalashop.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -1144,6 +1145,67 @@ function StickyWhatsApp() {
   );
 }
 
+function VideoDemo() {
+  return (
+    <section
+      id="demo-video"
+      className="bg-[var(--brand-navy)] text-white py-16 sm:py-24 border-t border-white/10"
+    >
+      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+        <div className="text-center max-w-3xl mx-auto">
+          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-[var(--brand-orange)]">
+            Guarda ScalaShop in 2 minuti
+          </p>
+          <h2 className="mt-4 text-3xl sm:text-5xl font-black leading-tight">
+            Se hai una bottega, questo video è{" "}
+            <span className="text-[var(--brand-orange)]">per te</span>.
+          </h2>
+          <p className="mt-5 text-base sm:text-lg text-white/80">
+            In meno di due minuti vedi come funziona davvero: vendite del giorno,
+            margini, ordini e scarichi — tutto in un'unica schermata, anche dal
+            telefono. Poi decidi se provarlo gratis.
+          </p>
+        </div>
+
+        <div className="mt-10 sm:mt-12">
+          <div className="relative mx-auto rounded-2xl overflow-hidden ring-1 ring-white/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)] bg-black">
+            <video
+              src={demoVideoAsset.url}
+              controls
+              playsInline
+              preload="metadata"
+              controlsList="nodownload"
+              className="block w-full h-auto aspect-video"
+              poster=""
+            >
+              Il tuo browser non supporta la riproduzione video.
+            </video>
+          </div>
+        </div>
+
+        <div className="mt-10 sm:mt-12 text-center">
+          <p className="text-sm sm:text-base text-white/70 mb-5">
+            Convinto? Provalo nella tua bottega, senza impegno.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+            <a
+              href={TRIAL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-full bg-[var(--brand-orange)] px-7 sm:px-9 py-4 text-base sm:text-lg font-bold text-[var(--brand-navy)] hover:brightness-105 transition shadow-lg"
+            >
+              Provalo Gratis per 14 Giorni
+            </a>
+            <span className="text-xs sm:text-sm text-white/60">
+              Nessuna carta richiesta · Setup incluso
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Index() {
   return (
     <div className="min-h-screen bg-white text-[var(--brand-navy)]">
@@ -1151,6 +1213,7 @@ function Index() {
       <Header />
       <main>
         <Hero />
+        <VideoDemo />
         <Story />
         <Pain />
         <HiddenCost />
