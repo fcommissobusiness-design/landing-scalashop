@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useRef, useState } from "react";
+import { Play } from "lucide-react";
 import logoAsset from "@/assets/scalashop-logo.png.asset.json";
 import demoVideoAsset from "@/assets/demo-scalashop.mp4.asset.json";
 import posterAsset from "@/assets/video-poster.png.asset.json";
@@ -1147,6 +1149,13 @@ function StickyWhatsApp() {
 }
 
 function VideoDemo() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+
+  const handleOverlayClick = () => {
+    videoRef.current?.play();
+  };
+
   return (
     <section
       id="demo-video"
@@ -1173,6 +1182,7 @@ function VideoDemo() {
         <div className="mt-10 sm:mt-12">
           <div className="relative mx-auto rounded-2xl overflow-hidden ring-1 ring-white/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)] bg-black">
             <video
+              ref={videoRef}
               src={demoVideoAsset.url}
               controls
               playsInline
@@ -1180,9 +1190,24 @@ function VideoDemo() {
               controlsList="nodownload"
               className="block w-full h-auto aspect-video"
               poster={posterAsset.url}
+              onPlay={() => setPlaying(true)}
+              onPause={() => setPlaying(false)}
             >
               Il tuo browser non supporta la riproduzione video.
             </video>
+
+            {!playing && (
+              <button
+                type="button"
+                onClick={handleOverlayClick}
+                className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition cursor-pointer"
+                aria-label="Riproduci il video"
+              >
+                <div className="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[var(--brand-orange)] text-[var(--brand-navy)] shadow-[0_8px_30px_-8px_rgba(245,166,35,0.8)] transition transform hover:scale-105">
+                  <Play className="w-7 h-7 sm:w-9 sm:h-9 fill-current ml-1" />
+                </div>
+              </button>
+            )}
           </div>
         </div>
 
