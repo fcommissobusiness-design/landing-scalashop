@@ -1154,7 +1154,7 @@ function VideoDemo() {
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <div className="text-center max-w-3xl mx-auto">
           <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-[var(--brand-orange)]">
-            Guarda ScalaShop in 2 minuti
+            Guarda ScalaShop in 3 minuti
           </p>
           <h2 className="mt-4 text-3xl sm:text-5xl font-black leading-tight">
             Se hai una bottega, questo video è{" "}
