@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useRef, useState } from "react";
+import { Play } from "lucide-react";
 import logoAsset from "@/assets/scalashop-logo.png.asset.json";
 import demoVideoAsset from "@/assets/demo-scalashop.mp4.asset.json";
 import posterAsset from "@/assets/video-poster.png.asset.json";
