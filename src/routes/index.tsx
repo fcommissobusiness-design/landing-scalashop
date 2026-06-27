@@ -1157,7 +1157,9 @@ function VideoDemo() {
             Guarda ScalaShop in 3 minuti
           </p>
           <h2 className="mt-4 text-3xl sm:text-5xl font-black leading-tight">
-            Se hai una bottega, questo video è{" "}
+            Titolare di una gastronomia?
+            <br />
+            Questo video è{" "}
             <span className="text-[var(--brand-orange)]">per te</span>.
           </h2>
           <p className="mt-5 text-base sm:text-lg text-white/80">
