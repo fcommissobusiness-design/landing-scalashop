@@ -1163,9 +1163,9 @@ function VideoDemo() {
             <span className="text-[var(--brand-orange)]">per te</span>.
           </h2>
           <p className="mt-5 text-base sm:text-lg text-white/80">
-            In meno di cinque minuti vedi come funziona davvero vendite al giorno,
-            margini, ordini, scarichi, tutto in un'unica schermata, anche da
-            telefono.
+            In meno di cinque minuti vedi come funziona davvero: vendite della
+            giornata, margini, ordini, scarichi, tutto in un'unica schermata,
+            anche da telefono.
           </p>
         </div>
 
