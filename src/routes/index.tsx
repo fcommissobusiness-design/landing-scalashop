@@ -219,12 +219,12 @@ function PhoneMockup({ compact = false }: { compact?: boolean }) {
               ["Lasagne porzione", "€ 48,00"],
               ["Mortadella artigianale", "€ 31,50"],
             ].map(([n, v]) => (
-              <li key={n} className="flex items-center justify-between">
-                <span className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-orange)]" />
-                  {n}
+              <li key={n} className="flex items-center justify-between gap-2">
+                <span className="flex items-center gap-2 min-w-0">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-orange)] shrink-0" />
+                  <span className="truncate">{n}</span>
                 </span>
-                <span className="font-semibold">{v}</span>
+                <span className="font-semibold whitespace-nowrap shrink-0">{v}</span>
               </li>
             ))}
           </ul>
