@@ -170,7 +170,7 @@ function BeforeBoard() {
 function PhoneMockup({ compact = false }: { compact?: boolean }) {
   return (
     <div
-      className={`relative mx-auto ${compact ? "w-[230px]" : "w-[260px] sm:w-[290px]"} rounded-[2.2rem] border-[10px] border-[#0b1422] bg-[#0b1422] shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)]`}
+      className={`relative mx-auto ${compact ? "w-[280px]" : "w-[300px] sm:w-[340px]"} rounded-[2.2rem] border-[10px] border-[#0b1422] bg-[#0b1422] shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)]`}
     >
       <div className="absolute left-1/2 top-1.5 z-10 h-4 w-20 -translate-x-1/2 rounded-full bg-[#0b1422]" />
       <div className="overflow-hidden rounded-[1.6rem] bg-white">
