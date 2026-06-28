@@ -388,11 +388,11 @@ function Story() {
 
         <div className="mt-16 text-center">
           <p className="mx-auto max-w-2xl text-xl sm:text-2xl font-medium italic text-[var(--brand-navy)]/80 leading-snug">
-            Oggi quella stessa logica può vivere nella tua attività.
+            Oggi quello stesso strumento può vivere nella tua attività.
           </p>
         </div>
 
-        <SectionCTA bridge="Inizia oggi a tenere tutto sotto controllo." />
+        <SectionCTA bridge={<span className="underline decoration-[var(--brand-orange)] decoration-2 underline-offset-4">Inizia oggi a tenere tutto sotto controllo.</span>} />
       </div>
     </section>
   );
