@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Play } from "lucide-react";
 import logoAsset from "@/assets/scalashop-logo.png.asset.json";
 import demoVideoAsset from "@/assets/demo-scalashop.mp4.asset.json";
@@ -1155,6 +1155,30 @@ function VideoDemo() {
   const handleOverlayClick = () => {
     videoRef.current?.play();
   };
+
+  useEffect(() => {
+    const lockLandscape = async () => {
+      const fsEl =
+        document.fullscreenElement ||
+        (document as unknown as { webkitFullscreenElement?: Element })
+          .webkitFullscreenElement;
+      if (!fsEl) return;
+      const orientation = screen.orientation as ScreenOrientation & {
+        lock?: (o: string) => Promise<void>;
+      };
+      try {
+        await orientation?.lock?.("landscape");
+      } catch {
+        /* iOS Safari & desktop: lock not supported, ignore */
+      }
+    };
+    document.addEventListener("fullscreenchange", lockLandscape);
+    document.addEventListener("webkitfullscreenchange", lockLandscape);
+    return () => {
+      document.removeEventListener("fullscreenchange", lockLandscape);
+      document.removeEventListener("webkitfullscreenchange", lockLandscape);
+    };
+  }, []);
 
   return (
     <section
