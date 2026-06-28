@@ -611,6 +611,9 @@ function Positioning() {
                   "Sistema collegato al registratore di cassa",
                   "Un solo posto per tutto. Sempre a portata di mano.",
                   "Zero tecnici necessari.",
+                  "Una cosa fatta bene, non venti a metà.",
+                  "Parla la tua lingua: scontrino medio, marginalità, prodotti che rendono.",
+                  "Pronto in giornata: configurazione assistita, niente corsi da seguire.",
                 ].map((t) => (
                   <li key={t} className="flex gap-3">
                     <span className="text-[var(--brand-orange)] font-bold mt-0.5">✓</span>
