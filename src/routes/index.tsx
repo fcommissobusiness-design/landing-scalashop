@@ -248,13 +248,13 @@ function Hero() {
       </div>
 
       <div className="relative mx-auto max-w-6xl px-5 sm:px-6 pt-12 sm:pt-20 pb-16 md:pb-24">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-[2.1rem] leading-[1.05] sm:text-5xl md:text-6xl font-bold tracking-tight">
             Riprendi il controllo
             <br />
             della tua <span className="text-[var(--brand-orange)]">attività.</span>
           </h1>
-          <p className="mt-5 text-base sm:text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl">
+          <p className="mt-5 text-base sm:text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl mx-auto">
             Vendite, scontrini, clienti, margini, ordini e riordini senza sprechi:
             tutto in un unico sistema. Anche dal telefono, mentre sei al banco.
           </p>
