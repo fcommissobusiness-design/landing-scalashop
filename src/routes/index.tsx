@@ -529,7 +529,7 @@ function HiddenCost() {
               <p className="mt-3 text-2xl sm:text-[1.7rem] font-bold leading-tight text-[var(--brand-orange)]">
                 {l.kpi}
               </p>
-              {l.t && <p className="mt-1 text-lg font-semibold text-white">{l.t}</p>}
+              {l.t && <p className="mt-1 text-lg font-semibold text-[var(--brand-orange)]">{l.t}</p>}
               <p className="mt-3 text-[15px] text-white/70 leading-relaxed">{l.d}</p>
             </div>
           ))}
