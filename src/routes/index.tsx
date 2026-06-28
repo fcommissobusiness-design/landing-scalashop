@@ -138,8 +138,8 @@ function StageLabel({ children, tone = "muted" }: { children: React.ReactNode; t
 function BeforeBoard() {
   const sources = [
     { tag: "WhatsApp", text: "“Mi tieni 3 etti di parmigiano per sabato?”" },
-    { tag: "Quaderno cassa", text: "Mar 11 — incasso ~ 340 (?) da ricontrollare" },
-    { tag: "Post-it", text: "Sig.ra Bianchi — vassoio misto, ritira sabato 09:30" },
+    { tag: "Quaderno cassa", text: "Mar 11, incasso ~ 340 (?) da ricontrollare" },
+    { tag: "Post-it", text: "Sig.ra Bianchi, vassoio misto, ritira sabato 09:30" },
     { tag: "Excel", text: "margini_v3_FINAL.xlsx" },
     { tag: "Memoria", text: "Quanto ho venduto davvero ieri? E mercoledì scorso?" },
   ];
@@ -148,7 +148,6 @@ function BeforeBoard() {
       <div className="rounded-xl border border-white/15 bg-white/[0.04] p-5 sm:p-6 backdrop-blur-sm">
         <div className="flex items-center justify-between">
           <p className="text-[11px] uppercase tracking-[0.25em] text-white/60">Le tue informazioni, oggi</p>
-          <span className="text-[11px] font-semibold text-red-300/90">Mille posti diversi</span>
         </div>
         <p className="mt-3 text-sm text-white/75 leading-snug">
           Oggi le informazioni della tua attività sono sparse in mille posti diversi.
@@ -171,7 +170,7 @@ function BeforeBoard() {
 function PhoneMockup({ compact = false }: { compact?: boolean }) {
   return (
     <div
-      className={`relative mx-auto ${compact ? "w-[230px]" : "w-[260px] sm:w-[290px]"} rounded-[2.2rem] border-[10px] border-[#0b1422] bg-[#0b1422] shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)]`}
+      className={`relative mx-auto ${compact ? "w-[280px]" : "w-[300px] sm:w-[340px]"} rounded-[2.2rem] border-[10px] border-[#0b1422] bg-[#0b1422] shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)]`}
     >
       <div className="absolute left-1/2 top-1.5 z-10 h-4 w-20 -translate-x-1/2 rounded-full bg-[#0b1422]" />
       <div className="overflow-hidden rounded-[1.6rem] bg-white">
@@ -220,12 +219,12 @@ function PhoneMockup({ compact = false }: { compact?: boolean }) {
               ["Lasagne porzione", "€ 48,00"],
               ["Mortadella artigianale", "€ 31,50"],
             ].map(([n, v]) => (
-              <li key={n} className="flex items-center justify-between">
-                <span className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-orange)]" />
-                  {n}
+              <li key={n} className="flex items-center justify-between gap-2">
+                <span className="flex items-center gap-2 min-w-0">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-orange)] shrink-0" />
+                  <span className="truncate">{n}</span>
                 </span>
-                <span className="font-semibold">{v}</span>
+                <span className="font-semibold whitespace-nowrap shrink-0">{v}</span>
               </li>
             ))}
           </ul>
@@ -248,13 +247,13 @@ function Hero() {
       </div>
 
       <div className="relative mx-auto max-w-6xl px-5 sm:px-6 pt-12 sm:pt-20 pb-16 md:pb-24">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-[2.1rem] leading-[1.05] sm:text-5xl md:text-6xl font-bold tracking-tight">
             Riprendi il controllo
             <br />
             della tua <span className="text-[var(--brand-orange)]">attività.</span>
           </h1>
-          <p className="mt-5 text-base sm:text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl">
+          <p className="mt-5 text-base sm:text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl mx-auto">
             Vendite, scontrini, clienti, margini, ordini e riordini senza sprechi:
             tutto in un unico sistema. Anche dal telefono, mentre sei al banco.
           </p>
@@ -285,8 +284,8 @@ function Hero() {
 
             </div>
             <p className="mt-4 text-center text-sm text-white/60 max-w-sm mx-auto">
-              Una sola schermata. Apri il telefono e vedi quanto hai venduto, cosa rende e cosa
-              serve fare adesso.
+              Una sola schermata. Apri il telefono e vedi quanto hai venduto, cosa rende davvero e
+              cosa serve fare adesso.
             </p>
             <div className="mt-5">
               <PhoneMockup />
@@ -311,7 +310,7 @@ function SectionCTA({
   bridge,
   tone = "light",
 }: {
-  bridge: string;
+  bridge: React.ReactNode;
   tone?: "light" | "dark";
 }) {
   const isDark = tone === "dark";
@@ -389,11 +388,11 @@ function Story() {
 
         <div className="mt-16 text-center">
           <p className="mx-auto max-w-2xl text-xl sm:text-2xl font-medium italic text-[var(--brand-navy)]/80 leading-snug">
-            Oggi quella stessa logica può vivere nella tua attività.
+            Oggi quello stesso strumento può vivere nella tua attività.
           </p>
         </div>
 
-        <SectionCTA bridge="Inizia oggi a tenere tutto sotto controllo." />
+        <SectionCTA bridge={<span className="underline decoration-[var(--brand-orange)] decoration-2 underline-offset-4">Inizia oggi a tenere tutto sotto controllo.</span>} />
       </div>
     </section>
   );
@@ -468,7 +467,7 @@ function Pain() {
           </p>
         </div>
 
-        <SectionCTA bridge="Smetti di gestire tutto a memoria. Riprendi il controllo già da oggi." />
+        <SectionCTA bridge={<span className="underline decoration-[var(--brand-orange)] decoration-2 underline-offset-4">Smetti di gestire tutto a memoria. Riprendi il controllo già da oggi.</span>} />
       </div>
     </section>
   );
@@ -530,7 +529,7 @@ function HiddenCost() {
               <p className="mt-3 text-2xl sm:text-[1.7rem] font-bold leading-tight text-[var(--brand-orange)]">
                 {l.kpi}
               </p>
-              {l.t && <p className="mt-1 text-lg font-semibold text-white">{l.t}</p>}
+              {l.t && <p className="mt-1 text-lg font-semibold text-[var(--brand-orange)]">{l.t}</p>}
               <p className="mt-3 text-[15px] text-white/70 leading-relaxed">{l.d}</p>
             </div>
           ))}
@@ -612,6 +611,9 @@ function Positioning() {
                   "Sistema collegato al registratore di cassa",
                   "Un solo posto per tutto. Sempre a portata di mano.",
                   "Zero tecnici necessari.",
+                  "Una cosa fatta bene, non venti a metà.",
+                  "Parla la tua lingua: scontrino medio, marginalità, prodotti che rendono.",
+                  "Pronto in giornata: configurazione assistita, niente corsi da seguire.",
                 ].map((t) => (
                   <li key={t} className="flex gap-3">
                     <span className="text-[var(--brand-orange)] font-bold mt-0.5">✓</span>
@@ -866,7 +868,7 @@ function ReceiptsPillar() {
             </h2>
             <p className="mt-6 text-lg text-white/80 leading-relaxed">
               Vendi al banco come hai sempre fatto. ScalaShop registra automaticamente
-              <strong> importo, orario e prodotti</strong> di ogni scontrino, e ti restituisce
+              <strong className="text-[var(--brand-orange)]"> importo, orario e prodotti</strong> di ogni scontrino, e ti restituisce
               in tempo reale com'è andata la giornata.
             </p>
             <ul className="mt-7 space-y-3 text-base sm:text-lg">
@@ -1157,26 +1159,53 @@ function VideoDemo() {
   };
 
   useEffect(() => {
+    const video = videoRef.current;
+    const orientation = screen.orientation as ScreenOrientation & {
+      lock?: (o: string) => Promise<void>;
+    };
+
     const lockLandscape = async () => {
+      try {
+        await orientation?.lock?.("landscape");
+      } catch {
+        /* not supported (iOS Safari, desktop): ignore */
+      }
+    };
+    const unlock = () => {
+      try {
+        orientation?.unlock?.();
+      } catch {
+        /* ignore */
+      }
+    };
+    const onDocFsChange = () => {
       const fsEl =
         document.fullscreenElement ||
         (document as unknown as { webkitFullscreenElement?: Element })
           .webkitFullscreenElement;
-      if (!fsEl) return;
-      const orientation = screen.orientation as ScreenOrientation & {
-        lock?: (o: string) => Promise<void>;
-      };
-      try {
-        await orientation?.lock?.("landscape");
-      } catch {
-        /* iOS Safari & desktop: lock not supported, ignore */
-      }
+      if (fsEl) lockLandscape();
+      else unlock();
     };
-    document.addEventListener("fullscreenchange", lockLandscape);
-    document.addEventListener("webkitfullscreenchange", lockLandscape);
+
+    document.addEventListener("fullscreenchange", onDocFsChange);
+    document.addEventListener("webkitfullscreenchange", onDocFsChange);
+    video?.addEventListener("webkitbeginfullscreen", lockLandscape);
+    video?.addEventListener("webkitendfullscreen", unlock);
+
+    // Chrome Android: when user taps fullscreen, request document fullscreen
+    // on the wrapping element so the orientation API can lock.
+    const onClick = (e: Event) => {
+      // Heuristic: native controls fullscreen button click; rely on fsChange to lock.
+      void e;
+    };
+    video?.addEventListener("click", onClick);
+
     return () => {
-      document.removeEventListener("fullscreenchange", lockLandscape);
-      document.removeEventListener("webkitfullscreenchange", lockLandscape);
+      document.removeEventListener("fullscreenchange", onDocFsChange);
+      document.removeEventListener("webkitfullscreenchange", onDocFsChange);
+      video?.removeEventListener("webkitbeginfullscreen", lockLandscape);
+      video?.removeEventListener("webkitendfullscreen", unlock);
+      video?.removeEventListener("click", onClick);
     };
   }, []);
 
@@ -1191,7 +1220,7 @@ function VideoDemo() {
             Guarda ScalaShop in 3 minuti
           </p>
           <h2 className="mt-4 text-3xl sm:text-5xl font-black leading-tight">
-            Titolare di una gastronomia?
+            Titolare di una <span className="text-[var(--brand-orange)]">gastronomia</span>?
             <br />
             Questo video è{" "}
             <span className="text-[var(--brand-orange)]">per te</span>.
@@ -1265,7 +1294,7 @@ function Index() {
         <Pain />
         <HiddenCost />
         <Positioning />
-        <Differentiation />
+        {/* Differentiation rimosso (ridondante) */}
         <ReceiptsPillar />
         <WasteReduction />
         <Benefits />
