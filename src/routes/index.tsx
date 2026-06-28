@@ -1193,7 +1193,7 @@ function VideoDemo() {
             Guarda ScalaShop in 3 minuti
           </p>
           <h2 className="mt-4 text-3xl sm:text-5xl font-black leading-tight">
-            Titolare di una gastronomia?
+            Titolare di una <span className="text-[var(--brand-orange)]">gastronomia</span>?
             <br />
             Questo video è{" "}
             <span className="text-[var(--brand-orange)]">per te</span>.
