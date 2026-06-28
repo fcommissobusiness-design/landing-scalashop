@@ -284,8 +284,8 @@ function Hero() {
 
             </div>
             <p className="mt-4 text-center text-sm text-white/60 max-w-sm mx-auto">
-              Una sola schermata. Apri il telefono e vedi quanto hai venduto, cosa rende e cosa
-              serve fare adesso.
+              Una sola schermata. Apri il telefono e vedi quanto hai venduto, cosa rende davvero e
+              cosa serve fare adesso.
             </p>
             <div className="mt-5">
               <PhoneMockup />
