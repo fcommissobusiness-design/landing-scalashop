@@ -138,8 +138,8 @@ function StageLabel({ children, tone = "muted" }: { children: React.ReactNode; t
 function BeforeBoard() {
   const sources = [
     { tag: "WhatsApp", text: "“Mi tieni 3 etti di parmigiano per sabato?”" },
-    { tag: "Quaderno cassa", text: "Mar 11 — incasso ~ 340 (?) da ricontrollare" },
-    { tag: "Post-it", text: "Sig.ra Bianchi — vassoio misto, ritira sabato 09:30" },
+    { tag: "Quaderno cassa", text: "Mar 11, incasso ~ 340 (?) da ricontrollare" },
+    { tag: "Post-it", text: "Sig.ra Bianchi, vassoio misto, ritira sabato 09:30" },
     { tag: "Excel", text: "margini_v3_FINAL.xlsx" },
     { tag: "Memoria", text: "Quanto ho venduto davvero ieri? E mercoledì scorso?" },
   ];
@@ -148,7 +148,6 @@ function BeforeBoard() {
       <div className="rounded-xl border border-white/15 bg-white/[0.04] p-5 sm:p-6 backdrop-blur-sm">
         <div className="flex items-center justify-between">
           <p className="text-[11px] uppercase tracking-[0.25em] text-white/60">Le tue informazioni, oggi</p>
-          <span className="text-[11px] font-semibold text-red-300/90">Mille posti diversi</span>
         </div>
         <p className="mt-3 text-sm text-white/75 leading-snug">
           Oggi le informazioni della tua attività sono sparse in mille posti diversi.
