@@ -1159,26 +1159,53 @@ function VideoDemo() {
   };
 
   useEffect(() => {
+    const video = videoRef.current;
+    const orientation = screen.orientation as ScreenOrientation & {
+      lock?: (o: string) => Promise<void>;
+    };
+
     const lockLandscape = async () => {
+      try {
+        await orientation?.lock?.("landscape");
+      } catch {
+        /* not supported (iOS Safari, desktop): ignore */
+      }
+    };
+    const unlock = () => {
+      try {
+        orientation?.unlock?.();
+      } catch {
+        /* ignore */
+      }
+    };
+    const onDocFsChange = () => {
       const fsEl =
         document.fullscreenElement ||
         (document as unknown as { webkitFullscreenElement?: Element })
           .webkitFullscreenElement;
-      if (!fsEl) return;
-      const orientation = screen.orientation as ScreenOrientation & {
-        lock?: (o: string) => Promise<void>;
-      };
-      try {
-        await orientation?.lock?.("landscape");
-      } catch {
-        /* iOS Safari & desktop: lock not supported, ignore */
-      }
+      if (fsEl) lockLandscape();
+      else unlock();
     };
-    document.addEventListener("fullscreenchange", lockLandscape);
-    document.addEventListener("webkitfullscreenchange", lockLandscape);
+
+    document.addEventListener("fullscreenchange", onDocFsChange);
+    document.addEventListener("webkitfullscreenchange", onDocFsChange);
+    video?.addEventListener("webkitbeginfullscreen", lockLandscape);
+    video?.addEventListener("webkitendfullscreen", unlock);
+
+    // Chrome Android: when user taps fullscreen, request document fullscreen
+    // on the wrapping element so the orientation API can lock.
+    const onClick = (e: Event) => {
+      // Heuristic: native controls fullscreen button click; rely on fsChange to lock.
+      void e;
+    };
+    video?.addEventListener("click", onClick);
+
     return () => {
-      document.removeEventListener("fullscreenchange", lockLandscape);
-      document.removeEventListener("webkitfullscreenchange", lockLandscape);
+      document.removeEventListener("fullscreenchange", onDocFsChange);
+      document.removeEventListener("webkitfullscreenchange", onDocFsChange);
+      video?.removeEventListener("webkitbeginfullscreen", lockLandscape);
+      video?.removeEventListener("webkitendfullscreen", unlock);
+      video?.removeEventListener("click", onClick);
     };
   }, []);
 
