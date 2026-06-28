@@ -868,7 +868,7 @@ function ReceiptsPillar() {
             </h2>
             <p className="mt-6 text-lg text-white/80 leading-relaxed">
               Vendi al banco come hai sempre fatto. ScalaShop registra automaticamente
-              <strong> importo, orario e prodotti</strong> di ogni scontrino, e ti restituisce
+              <strong className="text-[var(--brand-orange)]"> importo, orario e prodotti</strong> di ogni scontrino, e ti restituisce
               in tempo reale com'è andata la giornata.
             </p>
             <ul className="mt-7 space-y-3 text-base sm:text-lg">
