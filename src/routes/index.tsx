@@ -310,7 +310,7 @@ function SectionCTA({
   bridge,
   tone = "light",
 }: {
-  bridge: string;
+  bridge: React.ReactNode;
   tone?: "light" | "dark";
 }) {
   const isDark = tone === "dark";
