@@ -1267,7 +1267,7 @@ function Index() {
         <Pain />
         <HiddenCost />
         <Positioning />
-        <Differentiation />
+        {/* Differentiation rimosso (ridondante) */}
         <ReceiptsPillar />
         <WasteReduction />
         <Benefits />
