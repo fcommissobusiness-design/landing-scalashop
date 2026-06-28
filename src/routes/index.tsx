@@ -467,7 +467,7 @@ function Pain() {
           </p>
         </div>
 
-        <SectionCTA bridge="Smetti di gestire tutto a memoria. Riprendi il controllo già da oggi." />
+        <SectionCTA bridge={<span className="underline decoration-[var(--brand-orange)] decoration-2 underline-offset-4">Smetti di gestire tutto a memoria. Riprendi il controllo già da oggi.</span>} />
       </div>
     </section>
   );
