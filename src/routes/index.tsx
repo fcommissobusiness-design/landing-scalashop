@@ -8,13 +8,13 @@ import posterAsset from "@/assets/video-poster.png.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ScalaShop — Riprendi il controllo della tua attività" },
+      { title: "ScalaShop - Riprendi il controllo della tua attività" },
       {
         name: "description",
         content:
           "Il sistema operativo per gastronomie, salumerie e botteghe alimentari italiane. Vendite, margini e ordini sotto controllo, anche dal telefono.",
       },
-      { property: "og:title", content: "ScalaShop — Riprendi il controllo della tua attività" },
+      { property: "og:title", content: "ScalaShop - Riprendi il controllo della tua attività" },
       {
         property: "og:description",
         content:
@@ -22,9 +22,9 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:image", content: logoAsset.url },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://scalashop.lovable.app/" },
+      { property: "og:url", content: "https://scalashopgestionale.it/" },
     ],
-    links: [{ rel: "canonical", href: "https://scalashop.lovable.app/" }],
+    links: [{ rel: "canonical", href: "https://scalashopgestionale.it/" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -32,7 +32,7 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "WebSite",
           name: "ScalaShop",
-          url: "https://scalashop.lovable.app/",
+          url: "https://scalashopgestionale.it/",
           description:
             "Il sistema operativo per il food retail artigianale italiano.",
         }),
@@ -48,10 +48,10 @@ const WHATSAPP_URL =
 const TRIAL_URL = WHATSAPP_URL;
 
 const tickerItems = [
-  "Prova ScalaShop gratuitamente per 14 giorni",
+  "Prova ScalaShop, inizia subito",
   "Il sistema operativo per il food retail artigianale italiano",
   "Tutta la tua attività sotto controllo, anche dal telefono",
-  "Demo gratuita disponibile fino al 31 luglio 2026",
+  "Attivazione in giornata, nessun costo",
   "Solo 7 posti disponibili",
   "Configurazione personalizzata disponibile",
 ];
@@ -91,9 +91,7 @@ function PrimaryCTA({
       : "border border-white/25 text-white hover:bg-white/10";
   return (
     <a
-      href={TRIAL_URL}
-      target="_blank"
-      rel="noopener noreferrer"
+      href="#registrati"
       className={`inline-flex items-center justify-center rounded-md font-semibold transition hover:-translate-y-0.5 ${style} ${sizing} ${className}`}
     >
       {children}
@@ -112,7 +110,7 @@ function Header() {
           rel="noopener noreferrer"
           className="hidden sm:inline-flex items-center justify-center rounded-md bg-[var(--brand-orange)] px-6 py-3 text-base font-semibold text-[var(--brand-navy)] shadow-[0_10px_24px_-10px_rgba(245,166,35,0.7)] hover:brightness-95"
         >
-          Provalo Gratuitamente per 14 Giorni
+          Prova ScalaShop, inizia subito
         </a>
       </div>
     </header>
@@ -294,7 +292,7 @@ function Hero() {
         </div>
 
         <div className="mt-12 flex flex-col items-center gap-3 text-center">
-          <PrimaryCTA size="lg">Provalo Gratuitamente per 14 Giorni</PrimaryCTA>
+          <PrimaryCTA size="lg">Prova ScalaShop, inizia subito</PrimaryCTA>
           <span className="text-xs sm:text-sm text-white/55">
             Nessuna carta richiesta • Attivazione in giornata
           </span>
@@ -323,7 +321,7 @@ function SectionCTA({
       >
         {bridge}
       </p>
-      <PrimaryCTA size="lg">Provalo Gratuitamente per 14 Giorni</PrimaryCTA>
+      <PrimaryCTA size="lg">Prova ScalaShop, inizia subito</PrimaryCTA>
       <span className={`text-xs sm:text-sm ${isDark ? "text-white/55" : "text-[var(--brand-navy)]/55"}`}>
         Nessuna carta richiesta • Attivazione in giornata
       </span>
@@ -331,7 +329,7 @@ function SectionCTA({
   );
 }
 
-/* ---------- STORYTELLING — Francesco ---------- */
+/* ---------- STORYTELLING - Francesco ---------- */
 
 function Story() {
   const problems = [
@@ -580,7 +578,7 @@ function Positioning() {
             <ul className="mt-4 space-y-2.5 text-[var(--brand-navy)]/80">
               {heavy.map((t) => (
                 <li key={t} className="flex gap-3">
-                  <span className="text-[var(--brand-navy)]/40 mt-1">—</span>
+                  <span className="text-[var(--brand-navy)]/40 mt-1">-</span>
                   <span className="font-medium">{t}</span>
                 </li>
               ))}
@@ -590,7 +588,7 @@ function Positioning() {
             </p>
           </div>
 
-          {/* ScalaShop — dominante */}
+          {/* ScalaShop - dominante */}
           <div className="lg:col-span-7 relative rounded-2xl bg-[var(--brand-navy)] p-8 sm:p-10 text-white shadow-[0_40px_80px_-30px_rgba(26,46,74,0.5)] overflow-hidden">
             <div className="pointer-events-none absolute -top-20 -right-16 h-72 w-72 rounded-full bg-[var(--brand-orange)]/25 blur-[100px]" />
             <div className="pointer-events-none absolute -bottom-24 -left-10 h-64 w-64 rounded-full bg-[var(--brand-orange)]/10 blur-[100px]" />
@@ -1019,7 +1017,7 @@ function FinalCTA() {
         </div>
         <p className="mt-6 text-lg text-white/80">Tutto in un unico sistema.</p>
         <div className="mt-10 flex flex-col items-center gap-3">
-          <PrimaryCTA size="lg">Provalo Gratuitamente per 14 Giorni</PrimaryCTA>
+          <PrimaryCTA size="lg">Prova ScalaShop, inizia subito</PrimaryCTA>
           <span className="text-sm text-white/60">Nessuna carta richiesta • Attivazione in giornata</span>
           <div className="mt-4 w-full max-w-sm">
             <div className="flex items-center justify-between text-[11px] font-semibold uppercase tracking-[0.18em] mb-2">
@@ -1066,7 +1064,7 @@ function FAQ() {
     },
     {
       q: "Posso provarlo prima?",
-      a: "Sì. Fino al 31 luglio 2026 puoi richiedere una demo gratuita di 14 giorni. La utilizzi direttamente nella tua attività e capisci concretamente quanto può aiutarti a recuperare controllo, ordine e visibilità.",
+      a: "Sì. Ti registri in un minuto e inizi subito a usare ScalaShop nella tua attività, senza costi di attivazione e senza carta di credito.",
     },
     {
       q: "Funziona da telefono?",
@@ -1282,6 +1280,166 @@ function VideoDemo() {
   );
 }
 
+const APP_URL = "https://app.scalashopgestionale.it";
+
+function LeadForm() {
+  const [form, setForm] = useState({
+    nome: "",
+    cognome: "",
+    attivita: "",
+    email: "",
+    telefono: "",
+    privacy: false,
+  });
+  const [status, setStatus] = useState<"idle" | "sending" | "error">("idle");
+
+  const update = (k: string, v: string | boolean) =>
+    setForm((prev) => ({ ...prev, [k]: v }));
+
+  const allFilled =
+    form.nome.trim() !== "" &&
+    form.cognome.trim() !== "" &&
+    form.attivita.trim() !== "" &&
+    form.email.trim() !== "" &&
+    form.telefono.trim() !== "" &&
+    form.privacy;
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!allFilled || status === "sending") return;
+    setStatus("sending");
+    try {
+      const env = (import.meta as any).env ?? {};
+      const url = env.VITE_SUPABASE_URL;
+      const key = env.VITE_SUPABASE_PUBLISHABLE_KEY;
+      if (!url || !key) throw new Error("config");
+      const res = await fetch(`${url}/rest/v1/leads`, {
+        method: "POST",
+        headers: {
+          apikey: key,
+          Authorization: `Bearer ${key}`,
+          "Content-Type": "application/json",
+          Prefer: "return=minimal",
+        },
+        body: JSON.stringify({
+          nome: form.nome.trim(),
+          cognome: form.cognome.trim(),
+          attivita: form.attivita.trim(),
+          email: form.email.trim(),
+          telefono: form.telefono.trim(),
+          fonte: "landing",
+        }),
+      });
+      if (!res.ok) throw new Error("insert");
+      window.location.href = APP_URL;
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  const inputClass =
+    "w-full rounded-md border border-[var(--brand-navy)]/15 px-4 py-3 text-base text-[var(--brand-navy)] outline-none focus:border-[var(--brand-orange)]";
+
+  return (
+    <section id="registrati" className="bg-[var(--brand-navy)] py-20 px-4">
+      <div className="mx-auto max-w-xl">
+        <h2 className="text-3xl sm:text-4xl font-bold text-white text-center">
+          Inizia subito con ScalaShop
+        </h2>
+        <p className="mt-4 text-center text-white/70">
+          Compila i campi e accedi subito a ScalaShop per la tua attività. Ci vuole un minuto.
+        </p>
+        <form
+          onSubmit={handleSubmit}
+          className="mt-8 flex flex-col gap-4 rounded-2xl bg-white p-6 sm:p-8"
+        >
+          <div className="grid gap-4 sm:grid-cols-2">
+            <input
+              className={inputClass}
+              placeholder="Nome"
+              value={form.nome}
+              onChange={(e) => update("nome", e.target.value)}
+              required
+            />
+            <input
+              className={inputClass}
+              placeholder="Cognome"
+              value={form.cognome}
+              onChange={(e) => update("cognome", e.target.value)}
+              required
+            />
+          </div>
+          <input
+            className={inputClass}
+            placeholder="Nome dell'attività"
+            value={form.attivita}
+            onChange={(e) => update("attivita", e.target.value)}
+            required
+          />
+          <input
+            type="email"
+            className={inputClass}
+            placeholder="Email"
+            value={form.email}
+            onChange={(e) => update("email", e.target.value)}
+            required
+          />
+          <input
+            type="tel"
+            className={inputClass}
+            placeholder="Numero di telefono"
+            value={form.telefono}
+            onChange={(e) => update("telefono", e.target.value)}
+            required
+          />
+          <label className="flex items-start gap-3 text-sm text-[var(--brand-navy)]/75">
+            <input
+              type="checkbox"
+              className="mt-1 h-4 w-4 shrink-0"
+              checked={form.privacy}
+              onChange={(e) => update("privacy", e.target.checked)}
+              required
+            />
+            <span>
+              Ho letto e accetto la{" "}
+              <a
+                href="/privacy-policy"
+                className="underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                privacy policy
+              </a>{" "}
+              e acconsento al trattamento dei miei dati per essere ricontattato.
+            </span>
+          </label>
+          <button
+            type="submit"
+            disabled={!allFilled || status === "sending"}
+            className="mt-2 rounded-md bg-[var(--brand-orange)] px-7 py-4 text-base font-semibold text-[var(--brand-navy)] transition hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {status === "sending" ? "Attendi..." : "Accedi a ScalaShop"}
+          </button>
+          {status === "error" && (
+            <p className="text-center text-sm text-red-600">
+              Qualcosa è andato storto. Riprova tra poco oppure scrivici su{" "}
+              <a
+                href={WHATSAPP_URL}
+                className="underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp
+              </a>
+              .
+            </p>
+          )}
+        </form>
+      </div>
+    </section>
+  );
+}
+
 function Index() {
   return (
     <div className="min-h-screen bg-white text-[var(--brand-navy)]">
@@ -1300,6 +1458,7 @@ function Index() {
         <Benefits />
         <Outcome />
         <FinalCTA />
+        <LeadForm />
         <FAQ />
       </main>
       <Footer />

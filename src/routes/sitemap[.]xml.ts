@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
-const BASE_URL = "https://scalashop.lovable.app";
+const BASE_URL = "https://scalashopgestionale.it";
 
 interface SitemapEntry {
   path: string;
