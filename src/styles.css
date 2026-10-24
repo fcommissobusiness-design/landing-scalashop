@@ -111,7 +111,16 @@
   --sidebar-ring: oklch(0.78 0.16 65);
 
   --brand-navy: #1A2E4A;
+  --brand-navy-900: #0E1A2E;
+  --brand-navy-800: #152541;
+  --brand-navy-700: #1A2E4A;
+  --brand-navy-600: #26406A;
+  --brand-ink: #0A1322;
   --brand-orange: #F5A623;
+  --brand-orange-600: #E89214;
+  --brand-orange-300: #FFCB6E;
+  --brand-cream: #FBF8F2;
+  --brand-paper: #F6F3EC;
 }
 
 @keyframes marquee {
@@ -253,3 +262,210 @@
     background-clip: content-box;
   }
 }
+
+/* ============================================================
+   PREMIUM DESIGN LAYER
+   Decorative backgrounds, premium buttons, elegant cards, etc.
+   Palette locked to brand (navy + orange).
+   ============================================================ */
+
+/* ---- Backgrounds: multi-layer gradient mesh ---- */
+.bg-premium-navy {
+  background-color: var(--brand-navy-900);
+  background-image:
+    radial-gradient(1200px 600px at 85% -10%, rgba(245,166,35,0.14), transparent 60%),
+    radial-gradient(900px 500px at -10% 25%, rgba(38,64,106,0.55), transparent 55%),
+    radial-gradient(700px 500px at 50% 110%, rgba(245,166,35,0.07), transparent 60%),
+    linear-gradient(180deg, var(--brand-navy-900) 0%, var(--brand-navy-800) 55%, var(--brand-navy-900) 100%);
+}
+.bg-premium-paper {
+  background-color: var(--brand-paper);
+  background-image:
+    radial-gradient(1000px 500px at 0% 0%, rgba(245,166,35,0.07), transparent 55%),
+    radial-gradient(900px 500px at 100% 100%, rgba(26,46,74,0.05), transparent 55%);
+}
+
+/* ---- Subtle noise/grain overlay for depth ---- */
+.grain {
+  position: relative;
+  isolation: isolate;
+}
+.grain::after {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  opacity: 0.6;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.045 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* ---- Subtle dot grid, for premium hero backgrounds ---- */
+.dotgrid::before {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.9), transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.9), transparent 70%);
+}
+
+/* ---- Chip (eyebrow pill) ---- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.9);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(6px);
+}
+.chip-dot {
+  width: 6px; height: 6px; border-radius: 9999px;
+  background: var(--brand-orange);
+  box-shadow: 0 0 0 3px rgba(245,166,35,0.22);
+}
+.chip-ink {
+  background: rgba(26,46,74,0.06);
+  color: var(--brand-navy);
+  border-color: rgba(26,46,74,0.12);
+}
+
+/* ---- Buttons premium ---- */
+.btn-premium {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--brand-navy);
+  background: linear-gradient(180deg, #FFCB6E 0%, var(--brand-orange) 48%, var(--brand-orange-600) 100%);
+  border: 1px solid rgba(26,46,74,0.1);
+  border-radius: 14px;
+  padding: 0.9rem 1.4rem;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.5) inset,
+    0 -2px 0 rgba(26,46,74,0.1) inset,
+    0 12px 24px -10px rgba(245,166,35,0.55),
+    0 2px 4px rgba(26,46,74,0.08);
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.25s ease, filter 0.2s ease;
+}
+.btn-premium:hover { transform: translateY(-1px); filter: brightness(1.04); }
+.btn-premium::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(100deg, transparent 40%, rgba(255,255,255,0.4) 50%, transparent 60%);
+  transform: translateX(-120%);
+  transition: transform 0.9s ease;
+  pointer-events: none;
+}
+.btn-premium:hover::after { transform: translateX(120%); }
+
+.btn-ghost-premium {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(10px);
+  border-radius: 14px;
+  padding: 0.9rem 1.4rem;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+.btn-ghost-premium:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.4); transform: translateY(-1px); }
+
+/* ---- Card patterns ---- */
+.card-glass {
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 18px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 48px -24px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.06) inset;
+}
+.card-paper {
+  background: #fff;
+  border: 1px solid rgba(26,46,74,0.08);
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(26,46,74,0.04), 0 20px 48px -24px rgba(26,46,74,0.14);
+}
+.card-ring {
+  position: relative;
+  border-radius: 20px;
+}
+.card-ring::before {
+  content: "";
+  position: absolute; inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(245,166,35,0.6), rgba(255,255,255,0.08) 40%, rgba(245,166,35,0.0) 70%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ---- Divider ornamentale ---- */
+.rule-ornament {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(26,46,74,0.14), transparent);
+}
+.rule-ornament::after {
+  content: "✦";
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--brand-orange);
+  background: var(--background);
+  padding: 0 0.75rem;
+  font-size: 10px;
+  letter-spacing: 0.5em;
+}
+
+/* ---- Section eyebrow ---- */
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--brand-orange-600);
+}
+
+/* ---- Input premium ---- */
+.input-premium {
+  width: 100%;
+  background: #fff;
+  border: 1px solid rgba(26,46,74,0.14);
+  border-radius: 12px;
+  padding: 0.95rem 1rem;
+  font-size: 1rem;
+  color: var(--brand-navy);
+  box-shadow: 0 1px 0 rgba(26,46,74,0.03) inset;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.input-premium::placeholder { color: rgba(26,46,74,0.4); }
+.input-premium:hover { border-color: rgba(26,46,74,0.22); }
+.input-premium:focus {
+  outline: none;
+  border-color: var(--brand-orange);
+  box-shadow: 0 0 0 4px rgba(245,166,35,0.15);
+}
+
+/* ---- Pulse accent for live elements ---- */
+@keyframes softPulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(245,166,35,0.5); }
+  50% { box-shadow: 0 0 0 10px rgba(245,166,35,0); }
+}
+.pulse-accent { animation: softPulse 2s ease-out infinite; }
+
