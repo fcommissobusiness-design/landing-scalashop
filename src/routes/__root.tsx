@@ -106,9 +106,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "canonical",
         href: "https://scalashopgestionale.it/",
       },
-      { rel: "icon", type: "image/png", href: "/scalashop-logo.png" },
-      { rel: "shortcut icon", type: "image/png", href: "/scalashop-logo.png" },
-      { rel: "apple-touch-icon", href: "/scalashop-logo.png" },
+      // Favicon quadrata (512x512) ottimale per i risultati di ricerca Google
+      { rel: "icon", type: "image/png", sizes: "any", href: "/favicon.png" },
+      { rel: "icon", type: "image/png", sizes: "192x192", href: "/favicon-192.png" },
+      { rel: "icon", type: "image/png", sizes: "512x512", href: "/favicon.png" },
+      { rel: "shortcut icon", type: "image/png", href: "/favicon.png" },
+      { rel: "apple-touch-icon", sizes: "192x192", href: "/favicon-192.png" },
+      { rel: "apple-touch-icon", sizes: "512x512", href: "/favicon.png" },
     ],
     scripts: [
       {
@@ -126,8 +130,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@type": "Organization",
           name: "ScalaShop",
           url: "https://scalashopgestionale.it/",
-          logo: "https://scalashopgestionale.it/scalashop-logo.png",
-          image: "https://scalashopgestionale.it/scalashop-logo.png",
+          logo: "https://scalashopgestionale.it/favicon.png",
+          image: "https://scalashopgestionale.it/favicon.png",
           slogan: "Food Business Growth",
           description:
             "Il sistema operativo per il food retail artigianale italiano.",
