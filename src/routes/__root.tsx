@@ -88,8 +88,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "ScalaShop - Il sistema operativo per la tua bottega" },
       { name: "twitter:description", content: "Il sistema operativo per il food retail artigianale italiano." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/26bf6c77-c978-41b1-b9ff-2c85567c3924/id-preview-df003aff--d5ca6b36-7306-404e-9681-c294f109e736.lovable.app-1781541601966.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/26bf6c77-c978-41b1-b9ff-2c85567c3924/id-preview-df003aff--d5ca6b36-7306-404e-9681-c294f109e736.lovable.app-1781541601966.png" },
+      { property: "og:image", content: "https://scalashopgestionale.it/scalashop-logo.png" },
+      { name: "twitter:image", content: "https://scalashopgestionale.it/scalashop-logo.png" },
     ],
     links: [
       {
@@ -100,6 +100,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "canonical",
         href: "https://scalashopgestionale.it/",
       },
+      { rel: "icon", type: "image/png", href: "/scalashop-logo.png" },
+      { rel: "shortcut icon", type: "image/png", href: "/scalashop-logo.png" },
+      { rel: "apple-touch-icon", href: "/scalashop-logo.png" },
     ],
     scripts: [
       {
@@ -117,6 +120,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@type": "Organization",
           name: "ScalaShop",
           url: "https://scalashopgestionale.it/",
+          logo: "https://scalashopgestionale.it/scalashop-logo.png",
+          image: "https://scalashopgestionale.it/scalashop-logo.png",
+          slogan: "Food Business Growth",
           description:
             "Il sistema operativo per il food retail artigianale italiano.",
         }),

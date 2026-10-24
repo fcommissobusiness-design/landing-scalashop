@@ -1109,7 +1109,19 @@ function Footer() {
       <div className="mx-auto max-w-6xl px-5 sm:px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-5">
         <img src={logoAsset.url} alt="ScalaShop logo" className="h-20 sm:h-24 md:h-32 w-auto" />
         <div className="flex flex-col sm:items-end items-center gap-2">
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="/come-funziona"
+              className="text-sm text-[var(--brand-navy)]/70 hover:text-[var(--brand-navy)] underline underline-offset-4"
+            >
+              Come funziona
+            </a>
+            <a
+              href="/funzionalita"
+              className="text-sm text-[var(--brand-navy)]/70 hover:text-[var(--brand-navy)] underline underline-offset-4"
+            >
+              Funzionalità
+            </a>
             <a
               href="/privacy-policy"
               className="text-sm text-[var(--brand-navy)]/70 hover:text-[var(--brand-navy)] underline underline-offset-4"
