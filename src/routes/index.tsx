@@ -101,17 +101,21 @@ function PrimaryCTA({
 
 function Header() {
   return (
-    <header className="border-b border-border bg-white">
-      <div className="mx-auto flex max-w-6xl items-center justify-center sm:justify-between px-5 sm:px-6 py-5 sm:py-6">
-        <img src={logoAsset.url} alt="ScalaShop logo" className="h-28 sm:h-32 md:h-40 w-auto" />
-        <a
-          href={TRIAL_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden sm:inline-flex items-center justify-center rounded-md bg-[var(--brand-orange)] px-6 py-3 text-base font-semibold text-[var(--brand-navy)] shadow-[0_10px_24px_-10px_rgba(245,166,35,0.7)] hover:brightness-95"
-        >
-          Prova ScalaShop, inizia subito
-        </a>
+    <header className="sticky top-0 z-40 border-b border-[color:rgb(26_46_74/0.08)] bg-white/80 backdrop-blur-xl supports-[backdrop-filter]:bg-white/70">
+      <div className="mx-auto flex max-w-6xl items-center justify-center sm:justify-between px-5 sm:px-6 py-4 sm:py-5">
+        <img src={logoAsset.url} alt="ScalaShop logo" className="h-20 sm:h-24 md:h-28 w-auto" />
+        <div className="hidden sm:flex items-center gap-4">
+          <span className="chip chip-ink">
+            <span className="chip-dot pulse-accent" />
+            Attivazione in giornata
+          </span>
+          <a
+            href="#registrati"
+            className="btn-premium text-base"
+          >
+            Prova ScalaShop, inizia subito
+          </a>
+        </div>
       </div>
     </header>
   );
@@ -238,20 +242,31 @@ function PhoneMockup({ compact = false }: { compact?: boolean }) {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[var(--brand-navy)] text-white">
+    <section className="relative overflow-hidden bg-premium-navy grain dotgrid text-white">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-40 -left-20 h-[28rem] w-[28rem] rounded-full bg-[var(--brand-orange)]/15 blur-[120px]" />
-        <div className="absolute bottom-[-10rem] right-[-6rem] h-[26rem] w-[26rem] rounded-full bg-white/[0.04] blur-[120px]" />
+        <div className="absolute -top-32 -right-32 h-[36rem] w-[36rem] rounded-full bg-[var(--brand-orange)]/18 blur-[140px]" />
+        <div className="absolute bottom-[-14rem] left-[-10rem] h-[32rem] w-[32rem] rounded-full bg-white/[0.05] blur-[120px]" />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-5 sm:px-6 pt-12 sm:pt-20 pb-16 md:pb-24">
+      <div className="relative mx-auto max-w-6xl px-5 sm:px-6 pt-14 sm:pt-24 pb-20 md:pb-28">
         <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-[2.1rem] leading-[1.05] sm:text-5xl md:text-6xl font-bold tracking-tight">
+          <div className="flex justify-center mb-6">
+            <span className="chip">
+              <span className="chip-dot pulse-accent" />
+              Il sistema operativo per il food retail italiano
+            </span>
+          </div>
+          <h1 className="text-[2.3rem] leading-[1.02] sm:text-5xl md:text-[4.25rem] font-bold tracking-tight">
             Riprendi il controllo
             <br />
-            della tua <span className="text-[var(--brand-orange)]">attività.</span>
+            della tua <span className="relative inline-block text-[var(--brand-orange)]">
+              attività.
+              <svg aria-hidden className="absolute left-0 right-0 -bottom-2 w-full h-3 pointer-events-none" viewBox="0 0 240 10" preserveAspectRatio="none">
+                <path d="M2 7 C 60 2, 120 2, 238 6" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" opacity="0.65" />
+              </svg>
+            </span>
           </h1>
-          <p className="mt-5 text-base sm:text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl mx-auto">
+          <p className="mt-6 text-base sm:text-lg md:text-xl text-white/75 leading-relaxed max-w-2xl mx-auto">
             Vendite, scontrini, clienti, margini, ordini e riordini senza sprechi:
             tutto in un unico sistema. Anche dal telefono, mentre sei al banco.
           </p>
@@ -291,11 +306,23 @@ function Hero() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center gap-3 text-center">
-          <PrimaryCTA size="lg">Prova ScalaShop, inizia subito</PrimaryCTA>
-          <span className="text-xs sm:text-sm text-white/55">
-            Nessuna carta richiesta • Attivazione in giornata
-          </span>
+        <div className="mt-14 flex flex-col items-center gap-5 text-center">
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <a href="#registrati" className="btn-premium text-base sm:text-lg px-8 py-4">
+              Prova ScalaShop, inizia subito
+              <svg aria-hidden className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
+            </a>
+            <a href="#funzionalita-video" className="btn-ghost-premium text-base">
+              Scopri come funziona
+            </a>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs sm:text-sm text-white/60">
+            <span className="inline-flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-white/40" />Nessuna carta richiesta</span>
+            <span className="inline-flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-white/40" />Attivazione in giornata</span>
+            <span className="inline-flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-white/40" />Senza installazioni</span>
+          </div>
         </div>
       </div>
     </section>
@@ -1349,21 +1376,29 @@ function LeadForm() {
     }
   }
 
-  const inputClass =
-    "w-full rounded-md border border-[var(--brand-navy)]/15 px-4 py-3 text-base text-[var(--brand-navy)] outline-none focus:border-[var(--brand-orange)]";
+  const inputClass = "input-premium";
 
   return (
-    <section id="registrati" className="bg-[var(--brand-navy)] py-20 px-4">
-      <div className="mx-auto max-w-xl">
-        <h2 className="text-3xl sm:text-4xl font-bold text-white text-center">
+    <section id="registrati" className="relative overflow-hidden bg-premium-navy grain py-24 px-4">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-20 left-1/2 -translate-x-1/2 h-[22rem] w-[42rem] rounded-full bg-[var(--brand-orange)]/10 blur-[120px]" />
+      </div>
+      <div className="relative mx-auto max-w-xl">
+        <div className="flex justify-center mb-5">
+          <span className="chip">
+            <span className="chip-dot pulse-accent" />
+            Attivazione in giornata
+          </span>
+        </div>
+        <h2 className="text-3xl sm:text-5xl font-bold text-white text-center leading-[1.05]">
           Inizia subito con ScalaShop
         </h2>
-        <p className="mt-4 text-center text-white/70">
+        <p className="mt-5 text-center text-white/70 text-base sm:text-lg">
           Compila i campi e accedi subito a ScalaShop per la tua attività. Ci vuole un minuto.
         </p>
         <form
           onSubmit={handleSubmit}
-          className="mt-8 flex flex-col gap-4 rounded-2xl bg-white p-6 sm:p-8"
+          className="relative card-ring mt-10 flex flex-col gap-4 rounded-[22px] bg-white p-7 sm:p-9 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.45),0_1px_0_rgba(255,255,255,0.6)_inset]"
         >
           <div className="grid gap-4 sm:grid-cols-2">
             <input
@@ -1404,10 +1439,10 @@ function LeadForm() {
             onChange={(e) => update("telefono", e.target.value)}
             required
           />
-          <label className="flex items-start gap-3 text-sm text-[var(--brand-navy)]/75">
+          <label className="flex items-start gap-3 text-sm text-[var(--brand-navy)]/75 pt-1">
             <input
               type="checkbox"
-              className="mt-1 h-4 w-4 shrink-0"
+              className="mt-1 h-4 w-4 shrink-0 accent-[var(--brand-orange)]"
               checked={form.privacy}
               onChange={(e) => update("privacy", e.target.checked)}
               required
@@ -1416,7 +1451,7 @@ function LeadForm() {
               Ho letto e accetto la{" "}
               <a
                 href="/privacy-policy"
-                className="underline"
+                className="underline underline-offset-2 hover:text-[var(--brand-orange-600)]"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -1428,9 +1463,16 @@ function LeadForm() {
           <button
             type="submit"
             disabled={!allFilled || status === "sending"}
-            className="mt-2 rounded-md bg-[var(--brand-orange)] px-7 py-4 text-base font-semibold text-[var(--brand-navy)] transition hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-50"
+            className="btn-premium mt-3 w-full text-base sm:text-lg py-4 disabled:cursor-not-allowed disabled:opacity-50 disabled:brightness-100 disabled:transform-none"
           >
-            {status === "sending" ? "Attendi..." : "Accedi a ScalaShop"}
+            {status === "sending" ? "Attendi..." : (
+              <>
+                Accedi a ScalaShop
+                <svg aria-hidden className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M13 5l7 7-7 7" />
+                </svg>
+              </>
+            )}
           </button>
           {status === "error" && (
             <p className="text-center text-sm text-red-600">
