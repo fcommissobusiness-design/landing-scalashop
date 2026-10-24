@@ -1352,6 +1352,17 @@ function LeadForm() {
       const url = env.VITE_SUPABASE_URL;
       const key = env.VITE_SUPABASE_PUBLISHABLE_KEY;
       if (!url || !key) throw new Error("config");
+
+      const payload = {
+        nome: form.nome.trim(),
+        cognome: form.cognome.trim(),
+        attivita: form.attivita.trim(),
+        email: form.email.trim(),
+        telefono: form.telefono.trim(),
+        fonte: "landing",
+      };
+
+      // 1. Salvataggio del lead su Supabase (critico)
       const res = await fetch(`${url}/rest/v1/leads`, {
         method: "POST",
         headers: {
@@ -1360,16 +1371,46 @@ function LeadForm() {
           "Content-Type": "application/json",
           Prefer: "return=minimal",
         },
-        body: JSON.stringify({
-          nome: form.nome.trim(),
-          cognome: form.cognome.trim(),
-          attivita: form.attivita.trim(),
-          email: form.email.trim(),
-          telefono: form.telefono.trim(),
-          fonte: "landing",
-        }),
+        body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error("insert");
+
+      // 2. Notifica Telegram all'owner (best-effort, non blocca il flusso).
+      // Credenziali iniettate al build da Cloudflare (VITE_TG_BOT_TOKEN / VITE_TG_CHAT_ID).
+      // Il bot token puo' solo scrivere al chat_id autorizzato (owner), non legge e non puo' scrivere ad altri.
+      try {
+        const tgToken = env.VITE_TG_BOT_TOKEN as string | undefined;
+        const tgChatId = env.VITE_TG_CHAT_ID as string | undefined;
+        if (tgToken && tgChatId) {
+          const now = new Date().toLocaleString("it-IT", {
+            day: "2-digit", month: "2-digit", year: "numeric",
+            hour: "2-digit", minute: "2-digit",
+          });
+          const text =
+            `🔔 <b>Nuovo lead ScalaShop</b>\n` +
+            `━━━━━━━━━━━━━━━\n` +
+            `👤 <b>${payload.nome} ${payload.cognome}</b>\n` +
+            `🏪 ${payload.attivita}\n` +
+            `📧 ${payload.email}\n` +
+            `📱 ${payload.telefono}\n` +
+            `━━━━━━━━━━━━━━━\n` +
+            `🕐 ${now} • da landing`;
+          const body = new URLSearchParams({
+            chat_id: tgChatId,
+            text,
+            parse_mode: "HTML",
+            disable_web_page_preview: "true",
+          });
+          // fire-and-forget: non attendiamo l'esito per non ritardare il redirect
+          void fetch(`https://api.telegram.org/bot${tgToken}/sendMessage`, {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: body.toString(),
+            keepalive: true,
+          }).catch(() => { /* silently ignore */ });
+        }
+      } catch { /* ignore */ }
+
       window.location.href = APP_URL;
     } catch {
       setStatus("error");
